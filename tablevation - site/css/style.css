@@ -7,6 +7,17 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/*.radio{
+  float: right;
+}*/
+
+.user-type{
+  float:left;
+  margin-left: 9%;
+  position: relative;
+  top:-2px;
+}
+
 
 /* Pen Title */
 
