@@ -32,10 +32,14 @@
             <form>
                 <input type="text" placeholder="Username" name="username" />
                 <input type="password" placeholder="Password" />
-                <span class="user-type">Owner</span>
-                <input type="radio" name="person-type" value="owner" required="true">
-                <span class="user-type">Customer</span>
-                <input type="radio" name="person-type" value="customer" required="true">
+                <label class="control control--radio">Owner
+  		              <input type="radio" name="login-type" value="owner" required="true"/>
+  		                <div class="control__indicator"></div>
+  	            </label>
+                <label class="control control--radio">Customer
+                  <input type="radio" name="login-type" value="customer" required="true"/>
+                  <div class="control__indicator"></div>
+                </label>
                 <button formaction="home.html">Login</button>
             </form>
         </div>
@@ -46,10 +50,14 @@
                 <input type="password" placeholder="Password" />
                 <input type="email" placeholder="Email Address" />
                 <input type="tel" placeholder="Phone Number" />
-                <span class="user-type">Owner</span>
-                <input type="radio" name="person-type" value="owner" required="true">
-                <span class="user-type">Customer</span>
-                <input type="radio" name="person-type" value="customer" required="true">
+                <label class="control control--radio">Owner
+  		              <input type="radio" name="login-type" value="owner" required="true"/>
+  		                <div class="control__indicator"></div>
+  	            </label>
+                <label class="control control--radio">Customer
+                  <input type="radio" name="login-type" value="customer" required="true"/>
+                  <div class="control__indicator"></div>
+                </label>
                 <button>Register</button>
             </form>
 
@@ -74,7 +82,7 @@
             }, "slow");
         });
     </script>
-
+    
     <footer>
 
     </footer>
