@@ -58,6 +58,11 @@ Queries:
 Creating Accounts- (Create User Account) (Create Restaurant Account)
 INSERT INTO Customer VALUES (?,?,?,?,?); ALL FIELDS
  INSERT INTO Customer VALUES ("jeanaldread@gmail.com","Aldread123","Jean","Aldread","07578260657");
+ insert into Customer  values ('cfernandez0@mozilla.com', 'utG3fgPlq', 'Catherine', 'Fernandez', '07551453898');
+insert into Customer values ('scarroll1@hatena.ne.jp', 'wQ0C1237u', 'Sara', 'Carroll', '07562651291');
+insert into Customer  values ('ahunt2@simplemachines.org', 'OTFNS9QeMiC6', 'Antonio', 'Hunt', '07562420453');
+insert into Customer  values ('rgarcia3@dropbox.com', '3yRcKY73', 'Ruth', 'Garcia', '07562651453');
+
 INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
 INSERT INTO Restaurant VALUES ("SpicyFlame.co.uk","SPF09pjL89054","SpicyFlame","56-60 High Street","Southsea","Portsmouth","Hampshire","PO4 7KL",4,"0230567849",09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,10:00,22:00,10:00,22:00,"Mexican",100);
 
