@@ -57,13 +57,14 @@ INSERT INTO Customer  values ('rgarcia3@dropbox.com', '3yRcKY73', 'Ruth', 'Garci
 
 INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
 insert into Restaurant values ('jlittle0@flavors.me', 'WhT6Vwo', 'Goyette-Wilkinson', '23 Newland road', 'NorthEnd', 'Portsmouth', 'Hampshire', 'PO59Ik', 4, 0, '02301 234587', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Indian Cousine', 90);
-insert into Restaurant values ('hadams1@unblog.fr', '7TeAiVk1uj', 'Abbott-Hilll', '1-3 Rowlands road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO2B12', 3, 0, '02301 23456', '9:00', '22:00', '10:00', '23:00', '10:00', '20:00', 'Vegan', 34);
+insert into Restaurant values ('SpicyFlame.co.uk', '7TeAiVk1uj', 'SpicyFlame', '1-3 Rowlands road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO2B12', 3, 0, '02301 23456', '9:00', '22:00', '10:00', '23:00', '10:00', '20:00', 'Vegan', 34);
 insert into Restaurant values ('lrose2@examiner.com', 'JXcwpZhhJFcs', 'Hettinger', '96 Queens road', 'GunWarf Quays', 'Portsmouth', 'Hampshire', 'PO1T16', 3, 0, '02301 454458', '9:00', '22:00', '10:00', '22:00', '10:00', '22:00', 'Chinese Buffet', 36);
 insert into Restaurant  values ('acarroll3@senate.gov', '3EEqQkJQ', 'Denesik-Rohan', '4 Jessie road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO9H43', 1, 0, '02301 234580', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Thai', 35);
 
 Making a Reservation- (Book Table)
 INSERT INTO Reservation VALUES (?,?,?,?,?,?,?); ALL EXCEPT ID
-INSERT INTO Reservation VALUES(`SpicyFlame`, `SpicyFlame.co.uk`,`jeanaldread@gmail.com`,16:00,23-09-2017,20,`a birthday reservation for Jean Aldread on the 23rd of September and a maximum of 20 seats`)
+INSERT INTO Reservation VALUES(0,`SpicyFlame`,`SpicyFlame.co.uk`,`jeanaldread@gmail.com`,`16:00`,`23-09-2017`,20,`a birthday reservation for Jean Aldread on the 23rd of September and a maximum of 20 seats`)
+
 
 Edit Accounts/Update of the Reservations- (Edit Account) (Amend Booking) (Update Table Reservation)
 UPDATE Customer SET (?,?,?);   forename, surname and Number
