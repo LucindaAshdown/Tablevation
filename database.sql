@@ -55,8 +55,11 @@ INSERT INTO Customer values ('scarroll1@hatena.ne.jp', 'wQ0C1237u', 'Sara', 'Car
 INSERT INTO Customer  values ('ahunt2@simplemachines.org', 'OTFNS9QeMiC6', 'Antonio', 'Hunt', '07562420453');
 INSERT INTO Customer  values ('rgarcia3@dropbox.com', '3yRcKY73', 'Ruth', 'Garcia', '07562651453');
 
-INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
-INSERT INTO Restaurant VALUES ("SpicyFlame.co.uk","SPF09pjL89054","SpicyFlame","56-60 High Street","Southsea","Portsmouth","Hampshire","PO4 7KL",4,"0230567849",09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,10:00,22:00,10:00,22:00,"Mexican",100);
+INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
+insert into Restaurant values ('jlittle0@flavors.me', 'WhT6Vwo', 'Goyette-Wilkinson', '23 Newland road', 'NorthEnd', 'Portsmouth', 'Hampshire', 'PO59Ik', 4, 0, '02301 234587', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Indian Cousine', 90);
+insert into Restaurant values ('hadams1@unblog.fr', '7TeAiVk1uj', 'Abbott-Hilll', '1-3 Rowlands road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO2B12', 3, 0, '02301 23456', '9:00', '22:00', '10:00', '23:00', '10:00', '20:00', 'Vegan', 34);
+insert into Restaurant values ('lrose2@examiner.com', 'JXcwpZhhJFcs', 'Hettinger', '96 Queens road', 'GunWarf Quays', 'Portsmouth', 'Hampshire', 'PO1T16', 3, 0, '02301 454458', '9:00', '22:00', '10:00', '22:00', '10:00', '22:00', 'Chinese Buffet', 36);
+insert into Restaurant  values ('acarroll3@senate.gov', '3EEqQkJQ', 'Denesik-Rohan', '4 Jessie road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO9H43', 1, 0, '02301 234580', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Thai', 35);
 
 Making a Reservation- (Book Table)
 INSERT INTO Reservation VALUES (?,?,?,?,?,?,?); ALL EXCEPT ID
