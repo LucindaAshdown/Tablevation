@@ -13,16 +13,8 @@ PostCode VARCHAR(8) NOT NULL,
 Rating INT NULL,
 Booked_Seats INT DEFAULT 0,
 Contact_Number VARCHAR(15) NOT NULL,
-Mon_OT TIME NOT NULL,
-Mon_CT TIME NOT NULL,
-Tues_OT TIME NOT NULL,
-Tues_CT TIME NOT NULL,
-Wed_OT TIME NOT NULL,
-Wed_CT TIME NOT NULL,
-Thur_OT TIME NOT NULL,
-Thur_CT TIME NOT NULL,
-Fri_OT TIME NOT NULL,
-Fri_CT TIME NOT NULL,
+MondayToFriday_OT Time NOT NULL,
+MondayToFriday_CT Time NOT NULL,
 Sat_OT TIME NOT NULL,
 Sat_CT TIME NOT NULL,
 Sun_OT TIME NOT NULL,
@@ -57,13 +49,22 @@ Queries:
 
 Creating Accounts- (Create User Account) (Create Restaurant Account)
 INSERT INTO Customer VALUES (?,?,?,?,?); ALL FIELDS
- INSERT INTO Customer VALUES ("jeanaldread@gmail.com","Aldread123","Jean","Aldread","07578260657");
-INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
-INSERT INTO Restaurant VALUES ("SpicyFlame.co.uk","SPF09pjL89054","SpicyFlame","56-60 High Street","Southsea","Portsmouth","Hampshire","PO4 7KL",4,"0230567849",09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,09:00,23:00,10:00,22:00,10:00,22:00,"Mexican",100);
+INSERT INTO Customer VALUES ("jeanaldread@gmail.com","Aldread123","Jean","Aldread","07578260657");
+INSERT INTO Customer  values ('cfernandez0@mozilla.com', 'utG3fgPlq', 'Catherine', 'Fernandez', '07551453898');
+INSERT INTO Customer values ('scarroll1@hatena.ne.jp', 'wQ0C1237u', 'Sara', 'Carroll', '07562651291');
+INSERT INTO Customer  values ('ahunt2@simplemachines.org', 'OTFNS9QeMiC6', 'Antonio', 'Hunt', '07562420453');
+INSERT INTO Customer  values ('rgarcia3@dropbox.com', '3yRcKY73', 'Ruth', 'Garcia', '07562651453');
+
+INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
+insert into Restaurant values ('jlittle0@flavors.me', 'WhT6Vwo', 'Goyette-Wilkinson', '23 Newland road', 'NorthEnd', 'Portsmouth', 'Hampshire', 'PO59Ik', 4, 0, '02301 234587', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Indian Cousine', 90);
+insert into Restaurant values ('SpicyFlame.co.uk', '7TeAiVk1uj', 'SpicyFlame', '1-3 Rowlands road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO2B12', 3, 0, '02301 23456', '9:00', '22:00', '10:00', '23:00', '10:00', '20:00', 'Vegan', 34);
+insert into Restaurant values ('lrose2@examiner.com', 'JXcwpZhhJFcs', 'Hettinger', '96 Queens road', 'GunWarf Quays', 'Portsmouth', 'Hampshire', 'PO1T16', 3, 0, '02301 454458', '9:00', '22:00', '10:00', '22:00', '10:00', '22:00', 'Chinese Buffet', 36);
+insert into Restaurant  values ('acarroll3@senate.gov', '3EEqQkJQ', 'Denesik-Rohan', '4 Jessie road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO9H43', 1, 0, '02301 234580', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Thai', 35);
 
 Making a Reservation- (Book Table)
 INSERT INTO Reservation VALUES (?,?,?,?,?,?,?); ALL EXCEPT ID
-INSERT INTO Reservation VALUES(`SpicyFlame`, `SpicyFlame.co.uk`,`jeanaldread@gmail.com`,16:00,23-09-2017,20,`a birthday reservation for Jean Aldread on the 23rd of September and a maximum of 20 seats`)
+INSERT INTO Reservation VALUES(0,`SpicyFlame`,`SpicyFlame.co.uk`,`jeanaldread@gmail.com`,`16:00`,`23-09-2017`,20,`a birthday reservation for Jean Aldread on the 23rd of September and a maximum of 20 seats`)
+
 
 Edit Accounts/Update of the Reservations- (Edit Account) (Amend Booking) (Update Table Reservation)
 UPDATE Customer SET (?,?,?);   forename, surname and Number
