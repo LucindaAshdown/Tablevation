@@ -10,9 +10,7 @@ body {
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
-.selectpicker{
 
-}
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
@@ -49,6 +47,9 @@ background-color: white;
 -------------------------------------------------- */
 
 /* Carousel base class */
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+}
 .carousel {
   height: 500px;
   margin-bottom: 60px;
