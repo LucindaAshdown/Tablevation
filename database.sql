@@ -55,7 +55,7 @@ INSERT INTO Customer values ('scarroll1@hatena.ne.jp', 'wQ0C1237u', 'Sara', 'Car
 INSERT INTO Customer  values ('ahunt2@simplemachines.org', 'OTFNS9QeMiC6', 'Antonio', 'Hunt', '07562420453');
 INSERT INTO Customer  values ('rgarcia3@dropbox.com', '3yRcKY73', 'Ruth', 'Garcia', '07562651453');
 
-INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
+INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); ALL EXCEPT BOOKED_SEATS
 insert into Restaurant values ('jlittle0@flavors.me', 'WhT6Vwo', 'Goyette-Wilkinson', '23 Newland road', 'NorthEnd', 'Portsmouth', 'Hampshire', 'PO59Ik', 4, 0, '02301 234587', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Indian Cousine', 90);
 insert into Restaurant values ('SpicyFlame.co.uk', '7TeAiVk1uj', 'SpicyFlame', '1-3 Rowlands road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO2B12', 3, 0, '02301 23456', '9:00', '22:00', '10:00', '23:00', '10:00', '20:00', 'Vegan', 34);
 insert into Restaurant values ('lrose2@examiner.com', 'JXcwpZhhJFcs', 'Hettinger', '96 Queens road', 'GunWarf Quays', 'Portsmouth', 'Hampshire', 'PO1T16', 3, 0, '02301 454458', '9:00', '22:00', '10:00', '22:00', '10:00', '22:00', 'Chinese Buffet', 36);
@@ -70,18 +70,18 @@ Edit Accounts/Update of the Reservations- (Edit Account) (Amend Booking) (Update
 UPDATE Customer SET (?,?,?);   forename, surname and Number
 UPDATE Reservation SET (?,?,?,?); Time, Date, No of people, details
 UPDATE Restaruant SET (?); Booked Seats
-UPDATE Restaruant SET (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); Contact_Number,Mon_OT,Mon_CT,Tues_OT,Tues_CT,Wed_OT,Wed_CT,Thur_OT,Thur_CT,Fri_OT,Fri_CT,Sat_OT,Sat_CT,Sun_OT,Sun_CT,Food_Type,Total_No_Seats
+UPDATE Restaruant SET (?,?,?,?,?,?,?,?,?); Contact_Number,MondayToFriday_OT, MondayToFriday_CT,Sat_OT,Sat_CT,Sun_OT,Sun_CT,Food_Type,Total_No_Seats
 
 Sort Restaurants by Area- (Select Area)
-SELECT Name,Contact_Number,Rating,Mon_OT,Mon_CT,Tues_OT,Tues_CT,Wed_OT,Wed_CT,Thur_OT,Thur_CT,Fri_OT,Fri_CT,Sat_OT,Sat_CT,Sun_OT,Sun_CT,Food_Type FROM Restaurant 
+SELECT Name,Contact_Number,Rating,MondayToFriday_OT, MondayToFriday_CT, Sat_OT, Sat_CT,Sun_OT,Sun_CT,Food_Type FROM Restaurant 
 WHERE Area=?;
 
 Sort Restaurants by Food Type- (Select Food Type)
-SELECT Name,Contact_Number,Rating,Mon_OT,Mon_CT,Tues_OT,Tues_CT,Wed_OT,Wed_CT,Thur_OT,Thur_CT,Fri_OT,Fri_CT,Sat_OT,Sat_CT,Sun_OT,Sun_CT FROM Restaurant 
+SELECT Name,Contact_Number,Rating,MondayToFriday_OT, MondayToFriday_CT, Sat_OT,Sat_CT,Sun_OT,Sun_CT FROM Restaurant 
 WHERE Food_Type=?;
 
 Sort Restaurants by Food Type and Area-
-SELECT Name,Contact_Number,Rating,Mon_OT,Mon_CT,Tues_OT,Tues_CT,Wed_OT,Wed_CT,Thur_OT,Thur_CT,Fri_OT,Fri_CT,Sat_OT,Sat_CT,Sun_OT,Sun_CT FROM Restaurant 
+SELECT Name,Contact_Number,Rating,MondayToFriday_OT, MondayToFriday_CT,Sat_OT,Sat_CT,Sun_OT,Sun_CT FROM Restaurant 
 WHERE Food_Type=? AND Area=?;
 
 Show all of the Reservations made by the Customer- (View Reservation)
