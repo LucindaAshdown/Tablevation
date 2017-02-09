@@ -2,22 +2,119 @@
 <html>
 
 <head>
-    <title>Tablevation - Create Owner Account</title>
+    <title>Tablevation - Create Restaurant Account</title>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="author" content="Jamie Toloui">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/ResturantCreate.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/jquery.js"></script>
 
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
+    <div class="pen-title">
+        <h1>Welcome to Tablevation</h1>
+        <!--<span>Pen <i class="fa fa-paint-brush"></i> + <i class="fa fa-code"></i> by <a href="http://andytran.me">Andy Tran</a></span> -->
+    </div>
+    <!-- Form Module-->
+    <div class="module form-module">
+        <div class="toggle">
+        </div>
+        <div class="form">
+            <h2>Create your restaurant account</h2>
+            <form>
+                <input type="text" placeholder="Email" name="Restaurant_Email" />
+                <input type="password" placeholder="Password" name="Retaurant_Password" />
+                <input type="text" placeholder="Restaurant Name" required="" name="Name" />
+                <input type="text" placeholder="Address Line 1" required="" name="Address_Line1" />
+                <input type="text" placeholder="Address Line 2 (Optional)" name="Address_Line1" />
+                <input type="text" placeholder="Address Line 3 (Optional)" name="Address_Line1" />
+                <input type="text" placeholder="Area" required="" name="Area" />
 
+                <input type="text" placeholder="Post Code" required="" name="PostCode" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" />
+
+                <input type="text" placeholder="Rating (Optional)" name="Rating" />
+                <input type="text" required="" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder="Phone number">
+
+                <select class="selectpicker" data-live-search="true" title="Please select a location" data-width="auto;">
+                  <option>Gunwharf </option>
+                  <option>Southsea </option>
+                  <option>Fratton</option>
+                </select>
+
+
+
+                <button formaction="login.html">Register</button>
+            </form>
+
+        </div>
+        <!-- <div class="form">
+            <h2>Choose your account type to create</h2>
+            <form> -->
+        <!-- <input type="text" placeholder="Username" required/>
+                <input type="password" placeholder="Password" required/>
+                <input type="email" placeholder="Email Address" required/>
+                <input type="tel" placeholder="Phone Number" /> -->
+        <!-- <label class="control control--radio">Owner
+  		              <input type="radio" name="login-type" value="owner-reg" required/>
+  		                <div class="control__indicator"></div>
+  	            </label>
+                <label class="control control--radio">Customer
+                  <input type="radio" name="login-type" value="customer-reg" required/>
+                  <div class="control__indicator"></div>
+                </label>
+
+
+            </form>
+        </div> -->
+        <div class="cta"><a href="#">Forgot your password?</a></div>
+    </div>
 
 
     <footer>
-
     </footer>
+    <!-- Toggles the form to change between login/create account  -->
+    <script>
+        // Toggle Function
+        // $(".toggle").click(function() {
+        //     // Switches the Icon
+        //     $(this).children("i").toggleClass("fa-pencil");
+        //     // Switches the forms
+        //     $(".form").animate({
+        //         height: "toggle",
+        //         "padding-top": "toggle",
+        //         "padding-bottom": "toggle",
+        //         opacity: "toggle"
+        //     }, "slow");
+        // });
+
+        // $(function() {
+        //     $("input[name$='login-type']").click(function() {
+        //         var value = $(this).val();
+        //         if (value == 'owner-reg') {
+        //             window.location.assign("CreateRestaurantAccount.html");
+        //         } else if (value == 'customer-reg') {
+        //             window.location.assign("CreateCustomerAccount.html");
+        //         }
+        //
+        //     });
+        // });
+    </script>
 </body>
 
 </html>
