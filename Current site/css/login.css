@@ -48,6 +48,7 @@ form>button {
 .control {
     top: 10px;
     font-size: 18px;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
     position: relative;
     display: block;
     margin-bottom: 15px;
