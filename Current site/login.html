@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Jamie Toloui">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery.js"></script>
 </head>
@@ -32,7 +32,7 @@
   		                <div class="control__indicator"></div>
   	            </label>
                 <label class="control control--radio">Customer
-                  <input type="radio" name="login-type" value="customer" required/>
+                  <input type="radio" name="login-type" value="customer" required=""/>
                   <div class="control__indicator"></div>
                 </label>
                 <button formaction="index.html">Login</button>
@@ -84,9 +84,9 @@
             $("input[name$='login-type']").click(function() {
                 var value = $(this).val();
                 if (value == 'owner-reg') {
-                    window.location.assign("home.html");
+                    window.location.assign("CreateRestaurantAccount.html");
                 } else if (value == 'customer-reg') {
-                    window.location.assign("hello.html");
+                    window.location.assign("CreateCustomerAccount.html");
                 }
 
             });
