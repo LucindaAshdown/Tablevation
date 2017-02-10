@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * A class that manages Restaurant data
@@ -42,13 +40,21 @@ public class RestaurantModel implements Model{
     private Date sunOpTime;
     private Date sunClTime;
     
+    private static RestaurantModel restaurantModel = null;
+    
     /**
-     * constructor that connect the class to the database
+     * constructor
+     * @throws ClassNotFoundException
      * @throws SQLException
-     * @throws ClassNotFoundException 
      */
-    public RestaurantModel() throws SQLException, ClassNotFoundException{
+    private RestaurantModel() throws ClassNotFoundException, SQLException{
        conn = Database.getConnection();
+    }
+    
+    public static RestaurantModel getInstance() throws SQLException, ClassNotFoundException{
+       if(restaurantModel == null)
+           restaurantModel = new RestaurantModel();
+       return restaurantModel;
     }
     
     // METHODS INTERFACING WITH THE DATABASE //
@@ -56,65 +62,63 @@ public class RestaurantModel implements Model{
     @Override
     public void insert() {
         String query = "INSERT INTO Restaurant "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.email);
             ps.setString(2, this.password);
-            ps.setString(3, ""); /*name */
-            ps.setString(4, ""); /*Address line 1 */
-            ps.setString(5, ""); /*Area */
-            ps.setString(6, ""); /*City */
-            ps.setString(7, ""); /*County */
-            ps.setString(8, ""); /*PostCode */
-            ps.setInt(9, 1); /*Rating */
-            ps.setString(10, ""); /*Contact Number */
-            Date currentDate = new Date();
-            Time currentTime = new Time(currentDate.getTime());
-            ps.setTime(11, currentTime); /* Monday to Friday Opening */
-            ps.setTime(12, currentTime); /* Monday to Friday Closing */
-            ps.setTime(13, currentTime); /* Saturday Opening Time */
-            ps.setTime(14, currentTime); /* Saturday Closing Time */
-            ps.setTime(15, currentTime); /* Sunday Opening Time */
-            ps.setTime(16, currentTime); /* Sunday Closing Time */
-            ps.setString(17, "Default");
-            ps.setInt(18, 1);
+            ps.setString(3, this.name); /*name */
+            ps.setString(4, this.addressLine1); /*Address line 1 */
+            ps.setString(5, this.area); /*Area */
+            ps.setString(6, "Portsmouth"); /*City */
+            ps.setString(7, "Hampshire"); /*County */
+            ps.setString(8, this.postCode); /*PostCode */
+            ps.setInt(9, -1); /*Rating */
+            ps.setInt(10, -1);
+            ps.setString(11, this.contactNumber); /*Contact Number */
+            Time currentTime = new Time((new Date()).getTime());
+            ps.setTime(12, new Time(currentTime.getTime())); /* Monday to Friday Opening */
+            ps.setTime(13, new Time(currentTime.getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
+            ps.setTime(14, new Time(currentTime.getTime()));
+            ps.setTime(15, new Time(currentTime.getTime())); /* Saturday Closing Time */
+            ps.setTime(16, new Time(currentTime.getTime())); /* Sunday Opening Time */
+            ps.setTime(17, new Time(currentTime.getTime())); /* Sunday Closing Time */
+            ps.setString(18, this.foodType);
+            ps.setInt(19, this.totalNumberOfSeats);
+            
             ps.executeUpdate();
-            conn.commit();
             
         } catch (SQLException ex) {
-            
+            ex.printStackTrace();
         }
         
     }
 
     @Override
     public void update() {
-        String query = "UPDATE Restaruant SET (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE Restaurant.email = ?";
+        String query = "UPDATE Restaruant SET (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE Restaurant.email = ?";
             try {
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, this.email);
-                ps.setString(2, this.password);
-                ps.setString(3, this.name); /*name */
-                ps.setString(4, this.addressLine1); /*Address line 1 */
-                ps.setString(5, this.area); /*Area */
-                ps.setString(6, this.city); /*City */
-                ps.setString(7, this.county); /*County */
-                ps.setString(8, this.postCode); /*PostCode */
-                ps.setInt(9, this.rating); /*Rating */
-                ps.setString(10, this.contactNumber); /*Contact Number */
+                ps.setString(1, this.name); /*name */
+                ps.setString(2, this.addressLine1); /*Address line 1 */
+                ps.setString(3, this.area); /*Area */
+                ps.setString(4, this.city); /*City */
+                ps.setString(5, this.county); /*County */
+                ps.setString(6, this.postCode); /*PostCode */
+                ps.setInt(7, this.rating); /*Rating */
+                ps.setString(8, this.contactNumber); /*Contact Number */
                 Date currentDate = new Date();
                 Time currentTime = new Time(currentDate.getTime());
-                ps.setTime(11, new Time(this.monFriOpTime.getTime())); /* Monday to Friday Opening */
-                ps.setTime(12, new Time(this.monFriClTime.getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
-                ps.setTime(13, new Time(this.satOpTime.getTime()));
-                ps.setTime(14, new Time(this.satClTime.getTime())); /* Saturday Closing Time */
-                ps.setTime(15, new Time(this.sunOpTime.getTime())); /* Sunday Opening Time */
-                ps.setTime(16, new Time(this.sunClTime.getTime())); /* Sunday Closing Time */
-                ps.setString(17, this.foodType);
-                ps.setInt(18, this.totalNumberOfSeats);
+                ps.setTime(9, new Time(this.monFriOpTime.getTime())); /* Monday to Friday Opening */
+                ps.setTime(10, new Time(this.monFriClTime.getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
+                ps.setTime(11, new Time(this.satOpTime.getTime()));
+                ps.setTime(12, new Time(this.satClTime.getTime())); /* Saturday Closing Time */
+                ps.setTime(13, new Time(this.sunOpTime.getTime())); /* Sunday Opening Time */
+                ps.setTime(14, new Time(this.sunClTime.getTime())); /* Sunday Closing Time */
+                ps.setString(15, this.foodType);
+                ps.setInt(16, this.totalNumberOfSeats);
                 
-                ps.setString(19, this.email); /* where statement email */
+                ps.setString(17, this.email); /* where statement email */
                 
                 ps.executeUpdate();
                 conn.commit();

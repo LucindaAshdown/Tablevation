@@ -24,14 +24,21 @@ public class ReservationModel implements Model{
     private Date bookedTime;
     private int numberOfGuests;
     private String details;
-
+    private static ReservationModel reservationModel = null;
+    
     /**
      * constructor
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public ReservationModel() throws ClassNotFoundException, SQLException{
+    private ReservationModel() throws ClassNotFoundException, SQLException{
        conn = Database.getConnection();
+    }
+    
+    public static ReservationModel getInstance() throws SQLException, ClassNotFoundException{
+       if(reservationModel == null)
+           reservationModel = new ReservationModel();
+       return reservationModel;
     }
     
     // METHODS INTERFACING WITH THE DATABASE //

@@ -22,13 +22,21 @@ public class CustomerModel implements Model{
     private String forename;
     private String surname;
     private String contactNumber;
+    private static CustomerModel customerModel = null;
+            
     /**
      * constructor that connect the class to the database
      * @throws ClassNotFoundException 
      * @throws java.sql.SQLException 
      */
-    public CustomerModel() throws ClassNotFoundException, SQLException{
+    private CustomerModel() throws ClassNotFoundException, SQLException{
        conn = Database.getConnection();
+    }
+    
+    public static CustomerModel getInstance() throws SQLException, ClassNotFoundException{
+       if(customerModel == null)
+           customerModel = new CustomerModel();
+       return customerModel;
     }
     
     @Override

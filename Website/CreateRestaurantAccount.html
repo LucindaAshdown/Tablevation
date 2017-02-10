@@ -111,11 +111,19 @@
                 <input type="text" placeholder="Address Line 1" required="" name="Address_Line1" />
                 <input type="text" placeholder="Address Line 2 (Optional)" name="Address_Line1" />
                 <input type="text" placeholder="Address Line 3 (Optional)" name="Address_Line1" />
-                <input type="text" placeholder="Area" required="" name="Area" />
+                
+                <select class="selectpicker" required="" data-live-search="true" title="Please select an Area" data-width="100%">
+                  <option>Gunwharf </option>
+                  <option>Southsea </option>
+                  <option>Fratton</option>
+                  <option>Old Portsmouth</option>
+                  <option>Eastney</option>
+                  <option>Cosham</option>
+                </select>
 
                 <input type="text" placeholder="Post Code" required="" name="PostCode" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" />
 
-                <select class="selectpicker"  title="Please select your resturant rating"  data-width="100%">
+                <select class="selectpicker" title="Please select your Restaurant Rating"  data-width="100%">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
