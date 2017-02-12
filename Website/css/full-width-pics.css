@@ -62,4 +62,9 @@ footer {
     .section-heading {
         font-size: 2em;
     }
+    .image-bg-fluid-height {
+        background: url("../img/Restaurant2img.jpg") no-repeat center center scroll;
+
+}
+
 }
