@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Jamie Toloui">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/accountCreation.css" rel="stylesheet">
+    <link href="css/ResturantCreate.css" rel="stylesheet">
     <link href="css/menu.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery.js"></script>
@@ -120,168 +120,48 @@
     </div>
     <!-- Form Module-->
     <div class="module form-module">
-        <div class="toggle">
+        <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+            <!-- When this is uncommented the page has an overflow -->
+            <!-- <div id="overflow-fix" class="tooltip">Create Account</div> -->
         </div>
-        <div class="form">
-            <h2>Create your restaurant account</h2>
-            <form>
-                <!-- <input type="text" placeholder="Email" name="Restaurant_Email" required=""/>
-                <input type="password" placeholder="Password" name="Retaurant_Password" required=""/>
-                <input type="text" placeholder="Restaurant Name" required="" name="Name"/>
-                <input type="text" placeholder="Address Line 1" required="" name="Address_Line1" />
-                <input type="text" placeholder="Address Line 2 (Optional)" name="Address_Line1" />
-                <input type="text" placeholder="Address Line 3 (Optional)" name="Address_Line1" />
-
-                <select class="selectpicker" required="" data-live-search="true" title="Please select an Area" data-width="100%">
-                  <option>Gunwharf </option>
-                  <option>Southsea </option>
-                  <option>Fratton</option>
-                  <option>Old Portsmouth</option>
-                  <option>Eastney</option>
-                  <option>Cosham</option>
-                </select>
-
-                <input type="text" placeholder="Post Code" required="" name="PostCode" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" />
-
-                <select class="selectpicker" title="Please select your Restaurant Rating"  data-width="100%">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-                <input type="text" required="" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder="Phone number">
-
-                <select class="selectpicker" required="" data-live-search="true" title="Please select the type of food"  data-width="100%">
-                  <option>British</option>
-                  <option>Chinese</option>
-                  <option>Indian</option>
-                  <option>Italian</option>
-                  <option>Greek</option>
-                  <option>Mexican</option>
-                  <option>Thai</option>
-                  <option>Spanish</option>
-                </select>
-
-                <input type="number" min="1" max="40" name="Total_No_Seats" value="" placeholder="Total number of seats" required="">
-
- -->
-
-                <div>
-                    <label for="Restaurant_Email">Email Address</label>
-                    <input type="email" id="Restaurant_Email" placeholder=" " name="Restaurant_Email" required=""/>
+        <div class="form" id="login-form">
+            <h2>Login to your account</h2>
+            <form name="login" autocomplete="on">
+                <!-- <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder=" " />
                     <div class="requirements">
                         Must be a valid email address.
                     </div>
                 </div>
 
                 <div>
-                    <label for="Retaurant_Password">Password</label>
-                    <input type="password" id="Retaurant_Password" name="Retaurant_Password" required="" placeholder=" " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required="" placeholder=" " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
 
                     <div class="requirements">
                         Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.
                     </div>
-                </div>
-                <div>
-                    <label for="Name">Restaurant Name</label>
-                    <input type="text" placeholder=" " required="" name="Name"/>
+                </div> -->
 
-                    <div class="requirements">
-                        Please enter your first name.
-                    </div>
-                </div>
-                <div>
-                    <label for="Surname">Address Line 1</label>
-                    <input type="text" placeholder=" " required="" name="Address_Line1" />
-
-                    <div class="requirements">
-                        Please enter your surname.
-                    </div>
-                </div>
-                <div>
-                    <label for="Area">Please select an Area</label>
-                    <select class="selectpicker" type="text" name="Area" required="" data-live-search="true" title="Please select an Area" data-width="100%">
-                      <option>Gunwharf </option>
-                      <option>Southsea </option>
-                      <option>Fratton</option>
-                      <option>Old Portsmouth</option>
-                      <option>Eastney</option>
-                      <option>Cosham</option>
-                    </select>
-
-                    <div class="requirements">
-                        Please enter your the restaurants area.
-                    </div>
-                </div>
-                <div>
-                    <label for="PostCode">Post code</label>
-                    <input type="text" placeholder=" " required="" name="PostCode" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" />
-
-                    <div class="requirements">
-                        Please enter a valid post code.
-                    </div>
-                </div>
-
-                <div>
-                    <label for="Rating">Please select your Restaurant Rating (Optional)</label>
-                    <select class="selectpicker" name="Rating" title="Please select your Restaurant Rating"  data-width="100%">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="Contact_Number">Phone number</label>
-                  <input type="text" required="" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder=" ">
-
-                    <div class="requirements">
-                        You must enter a valid phone number.
-                    </div>
-                </div>
-
-                <div>
-                    <label for="Food_Type">Please select the type of food</label>
-                    <select class="selectpicker" name="Food_Type" required="" data-live-search="true" title="Please select the type of food"  data-width="100%">
-                      <option>British</option>
-                      <option>Chinese</option>
-                      <option>Indian</option>
-                      <option>Italian</option>
-                      <option>Greek</option>
-                      <option>Mexican</option>
-                      <option>Thai</option>
-                      <option>Spanish</option>
-                    </select>
-                </div>
-
-
-
-                <div>
-                    <label for="Total_No_Seats">Total number of seats</label>
-                    <input type="number" min="1" max="40" name="Total_No_Seats" value="" placeholder="Total number of seats" required="">
-
-                    <div class="requirements">
-                        Restaurants seat currently must be between 1-40.
-                    </div>
-                </div>
-
-
-
-
-                <button class="button" formaction="login.html">Register</button>
+                <input type="text" placeholder="Username" name="username" />
+                <input type="password" placeholder="Password" name="password"/>
+                <label class="control control--radio">Owner
+  		              <input type="radio" name="login-type" value="owner" required/>
+  		                <div class="control__indicator"></div>
+  	            </label>
+                <label class="control control--radio">Customer
+                  <input type="radio" name="login-type" value="customer" required=""/>
+                  <div class="control__indicator"></div>
+                </label>
+                <button class="button" type="submit" formaction="index.html">Login</button>
             </form>
 
         </div>
-        <!-- <div class="form">
+        <div class="form">
             <h2>Choose your account type to create</h2>
-            <form> -->
-        <!-- <input type="text" placeholder="Username" required/>
-                <input type="password" placeholder="Password" required/>
-                <input type="email" placeholder="Email Address" required/>
-                <input type="tel" placeholder="Phone Number" /> -->
-        <!-- <label class="control control--radio">Owner
+            <form>
+                <label class="control control--radio">Owner
   		              <input type="radio" name="login-type" value="owner-reg" required/>
   		                <div class="control__indicator"></div>
   	            </label>
@@ -292,8 +172,9 @@
 
 
             </form>
-        </div> -->
+        </div>
         <div class="cta"><a href="#">Forgot your password?</a></div>
+        <div class="cta"><a href="index.html">Home</a></div>
     </div>
 
 
@@ -302,29 +183,30 @@
     <!-- Toggles the form to change between login/create account  -->
     <script>
         // Toggle Function
-        // $(".toggle").click(function() {
-        //     // Switches the Icon
-        //     $(this).children("i").toggleClass("fa-pencil");
-        //     // Switches the forms
-        //     $(".form").animate({
-        //         height: "toggle",
-        //         "padding-top": "toggle",
-        //         "padding-bottom": "toggle",
-        //         opacity: "toggle"
-        //     }, "slow");
-        // });
+        $(".toggle").click(function() {
+            // Switches the Icon
+            $(this).children("i").toggleClass("fa-pencil");
+            // Switches the forms
+            $(".form").animate({
+                height: "toggle",
+                "padding-top": "toggle",
+                "padding-bottom": "toggle",
+                opacity: "toggle"
+            }, "slow");
+        });
 
-        // $(function() {
-        //     $("input[name$='login-type']").click(function() {
-        //         var value = $(this).val();
-        //         if (value == 'owner-reg') {
-        //             window.location.assign("CreateRestaurantAccount.html");
-        //         } else if (value == 'customer-reg') {
-        //             window.location.assign("CreateCustomerAccount.html");
-        //         }
-        //
-        //     });
-        // });
+        $(function() {
+            $("input[name$='login-type']").click(function() {
+                var value = $(this).val();
+                if (value == 'owner-reg') {
+                    window.location.assign("CreateRestaurantAccount.html");
+                } else if (value == 'customer-reg') {
+                    window.location.assign("CreateCustomerAccount.html");
+                }
+
+            });
+        });
+
         jQuery(function($) {
             $('form').validatr();
         });

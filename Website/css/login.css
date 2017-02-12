@@ -301,10 +301,19 @@ form > div {
 form > div > input[type="text"],
 form > div > input[type="email"],
 form > div > input[type="password"] {
-  width: 100%;
+
+
   border: 0;
+  outline: none;
+  display: block;
+  width: 100%;
+  border-bottom: 2px solid #33b5e5;
+  margin: 0 0 20px;
   padding: 20px 20px 20px 50px;
-  background: #eee;
+  box-sizing: border-box;
+  font-wieght: 400;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 form > div > input[type="text"]:focus,
 form > div > input[type="email"]:focus,
@@ -367,7 +376,7 @@ form > div .requirements {
     color: #333333;
 }
 
-.form-module .button {
+.form-module #button-click {
     cursor: pointer;
     background: #33b5e5;
     width: 100%;
@@ -378,7 +387,7 @@ form > div .requirements {
     transition: 0.3s ease;
 }
 
-.form-module .button:hover {
+.form-module #button-click:hover {
     background: #178ab4;
 }
 
