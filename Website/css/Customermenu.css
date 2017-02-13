@@ -9,6 +9,8 @@ body {
 
 /*this makes the food type and total number of seats select have some space below*/
 
+
+
 .btn-group {
     padding-bottom: 2%;
 }
@@ -324,77 +326,19 @@ form>button {
     text-decoration: none;
 }
 
-
 /* css for the columns for menu items */
+div > .col-sm-4 > p> img{
 
-div>.col-sm-4>p>img {
-    padding-left: 10%;
-    height: 150px;
+  height: 150px;
+
 }
+div > .col-sm-4{
+  padding: 10px;
 
-div>.col-sm-4>a {
-    margin-left: 40%;
+  width: 31%;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  border-spacing: 5px;
+  background-color: grey;
+  border-collapse: separate;
 }
-
-div>.col-sm-4>p {
-    padding-left: 5%;
-    height: auto;
-}
-
-div>.col-sm-4 {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-spacing: 2px;
-    background-color: white;
-    border-spacing: 10px;
-    border-collapse: separate;
-    -webkit-box-shadow: 2px 12px 14px -14px rgba(0, 0, 0, 0.42);
-    -moz-box-shadow: 2px 12px 14px -14px rgba(0, 0, 0, 0.42);
-    box-shadow: 2px 12px 14px -14px rgba(0, 0, 0, 0.42);
-}
-
-div>.col-sm-4:hover {
-    background-color: #ede9e4;
-    border-style: hidden;
-    border-collapse: separate;
-}
-
-
-/* Custom, iPhone Retina */
-
-@media only screen and (min-width: 320px) {
-    div>.col-sm-4 {
-        max-width: 390px;
-        width: 100%;
-    }
-}
-
-
-/* Extra Small Devices, Phones */
-
-@media only screen and (min-width: 480px) {
-    div>.col-sm-4 {
-        max-width: 390px;
-        width: 100%;
-    }
-}
-
-
-/* Small Devices, Tablets */
-
-@media only screen and (min-width: 768px) {
-    div>.col-sm-4 {
-        max-width: 390px;
-        width: 100%;
-    }
-}
-
-
-/* Medium Devices, Desktops */
-
-@media only screen and (min-width: 992px) {}
-
-
-/* Large Devices, Wide Screens */
-
-@media only screen and (min-width: 1200px) {}
