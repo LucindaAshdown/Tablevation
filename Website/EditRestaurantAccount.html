@@ -8,6 +8,7 @@
     <meta name="author" content="Jamie Toloui">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/home.css" rel="stylesheet">
+    <link href="css/EditRestaurant.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery.js"></script>
 
@@ -93,9 +94,103 @@
         </div>
     </div>
 
+  <!-- Content Section -->
+  <section>
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <h1 class="section-heading">Edit Restaurant Account</h1>
+                  <div class="module form-module">
+                      <div class="toggle">
+                      </div>
+                      <div class="form">
+                          <h2>Enter the Details you would like to change</h2>
+                          <form autocomplete="on">
+                            <div>
+                                <label for="Contact_Number">Phone number</label>
+                                <input type="text" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder=" ">
+
+                            </div>
+                              <div>
+                                  <label for="MondayToFriday_OT">Monday to Friday Opening time</label>
+                                  <input type="text" id="MondayToFriday_OT" name="MondayToFriday_OT" placeholder=" " />
+
+                              </div>
+                              <div>
+                                  <label for="MondayToFriday_CT">Monday to Friday Closing time</label>
+                                  <input type="text" id="MondayToFriday_CT" name="MondayToFriday_CT" placeholder=" " />
+
+                              </div>
+                              <div>
+                                  <label for="Sat_CT">Saturday Opening time</label>
+                                  <input type="text" id="Sat_CT" name="Sat_CT" placeholder=" " />
+
+                              </div>
+
+                              <div>
+                                  <label for="Sat_CT">Saturday Closing time</label>
+                                  <input type="text" id="Sat_CT" name="Sat_CT" placeholder=" " />
+
+                              </div>
+                              <div>
+                                  <label for="Sun_CT">Sunday Opening Time</label>
+                                  <input type="text" id="Sun_CT" name="Sun_CT" placeholder=" " />
+
+                              </div>
+                              <div>
+                                  <label for="Sun_CT">Sunday Closing time</label>
+                                  <input type="text" id="Sun_CT" name="Sun_CT" placeholder=" " />
+
+                              </div>
+                              <div>
+                                  <label for="Food_Type">Please select the type of food</label>
+                                  <select class="selectpicker" name="Food_Type" data-live-search="true" title="Please select the type of food"  data-width="100%">
+                                    <option>British</option>
+                                    <option>Chinese</option>
+                                    <option>Indian</option>
+                                    <option>Italian</option>
+                                    <option>Greek</option>
+                                    <option>Mexican</option>
+                                    <option>Thai</option>
+                                    <option>Spanish</option>
+                                  </select>
+                              </div>
+
+                              <div>
+                                  <label for="Total_No_Seats">Total number of seats</label>
+                                  <input type="number" min="1" max="40" name="Total_No_Seats" value="" placeholder="Please Add the number of seats">
+
+                              </div>
+
+                              <button class="button" formaction="CustomerMenu.html">Save</button>
+                          </form>
+
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
     <footer>
 
     </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 </body>
 
 </html>
