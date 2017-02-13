@@ -53,6 +53,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-clockpicker.min.css">
 
 
 
@@ -166,21 +167,9 @@
                                   </select>
                                 </div>
 
-                                <!-- <div>
-                                    <label for="Customer_Email">Email Address</label>
-                                    <input type="email" id="Customer_Email" placeholder=" " name="Customer_Email" required="" />
-                                    <div class="requirements">
-                                        Must be a valid email address.
-                                    </div>
-                                </div> -->
 
-                                <div class="input-group clockpicker" data-placement="top" data-align="left" data-donetext="Done">
-			<input type="text" class="form-control" value="18:00">
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-time"></span>
-			</span>
-		</div>
 
+                              
 
 
                                 <div>
@@ -302,11 +291,7 @@
                 autoclose: true,
             })
         })
-        $('.clockpicker').clockpicker({
-            placement: 'top',
-            align: 'left',
-            donetext: 'Done'
-        });
+        $('.clockpicker').clockpicker();
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
