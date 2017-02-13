@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Jamie Toloui">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/accountCreation.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery.js"></script>
 
@@ -18,6 +18,16 @@
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <!-- Custom CSS -->
+    <link href="css/full-width-pics.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
@@ -91,7 +101,39 @@
                 <!-- /.container-fluid -->
             </nav>
 
+<!-- Content Section -->
+  <section>
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <h1 class="section-heading">Update Reservations</h1>
+                  <div class="module form-module">
+                      <div class="toggle">
+                      </div>
+                      <div class="form">
+                          <h2>Enter the current Total of Tables Available</h2>
+                          <form autocomplete="on">
+                            <div>
+                                <label for="Total_No_Seats">Total number of seats</label>
+                                <input type="number" min="1" max="40" name="Total_No_Seats" value="" placeholder="Total number of seats" required="">
 
+                                <div class="requirements">
+                                    Restaurants seat currently must be between 1-40.
+                                </div>
+                            </div>
+
+                            <button class="button" formaction="RestaurantMenu.html">Update</button>
+                          </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fixed Height Image Aside -->
+  <!-- Image backgrounds are set within the full-width-pics.css file. -->
+  <aside class="image-bg-fixed-height"></aside>
 
     <footer>
 
