@@ -173,15 +173,16 @@
                                         Must be a valid email address.
                                     </div>
                                 </div> -->
-                                <div class="well">
-                                  <div id="datetimepicker3" class="input-append">
-                                    <input data-format="hh:mm:ss" type="text"/>
-                                    <span class="add-on">
-                                      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                      </i>
-                                    </span>
-                                  </div>
-                                </div>
+
+                                <div class="input-group clockpicker" data-placement="top" data-align="left" data-donetext="Done">
+			<input type="text" class="form-control" value="18:00">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+			</span>
+		</div>
+
+
+
                                 <div>
                                     <label for="Booked_Date">Reservation date</label>
                                     <div class="input-group">
@@ -301,10 +302,20 @@
                 autoclose: true,
             })
         })
+        $('.clockpicker').clockpicker({
+            placement: 'top',
+            align: 'left',
+            donetext: 'Done'
+        });
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
+
+
+    <script type="text/javascript" src="js/bootstrap-clockpicker.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
         window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
