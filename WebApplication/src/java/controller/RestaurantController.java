@@ -1,11 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,13 +18,9 @@ import model.RestaurantModel;
 /**
  *
  * @author benha
- * @author Francesco David Nota
  */
 @WebServlet(name = "RestaurantController", urlPatterns = {"/RestaurantController"})
 public class RestaurantController extends HttpServlet {
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -35,7 +33,7 @@ public class RestaurantController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -50,7 +48,7 @@ public class RestaurantController extends HttpServlet {
         String action = request.getParameter("action");
         if("sign_up".equals(action)){
             String email = request.getParameter("Restaurant_Email");
-            String password = request.getParameter("Retaurant_Password");
+            String password = request.getParameter("Restaurant_Password");
             String restaurantName = request.getParameter("Name");
             String addressLine1 = request.getParameter("Address_Line1");
             String area = request.getParameter("Area");
@@ -74,6 +72,9 @@ public class RestaurantController extends HttpServlet {
                     resModel.setFoodType(foodType);
                     resModel.setTotalNumberOfSeats(totalNumberOfSeats);
                     resModel.insert();
+                    
+                    RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                    view.forward(request, response);
                 }
                 catch(Exception e){
                     e.printStackTrace();
@@ -81,4 +82,10 @@ public class RestaurantController extends HttpServlet {
             }
         }
     }
+    
+    public boolean login(String password,String email) throws ClassNotFoundException, SQLException{
+        RestaurantModel resModel = RestaurantModel.getInstance();
+        return resModel.isPresentAccountIntoDb(email,password);
+    }
+
 }

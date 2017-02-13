@@ -35,10 +35,10 @@ public class ReservationModel implements Model{
        conn = Database.getConnection();
     }
     
-    public static ReservationModel getInstance() throws SQLException, ClassNotFoundException{
-       if(reservationModel == null)
-           reservationModel = new ReservationModel();
-       return reservationModel;
+    public static ReservationModel getInstance() throws ClassNotFoundException, SQLException{
+         if(reservationModel == null)
+             reservationModel = new ReservationModel();
+         return reservationModel;
     }
     
     // METHODS INTERFACING WITH THE DATABASE //
@@ -53,11 +53,6 @@ public class ReservationModel implements Model{
     public void update() {
         PreparedStatement ps;
         String query = "UPDATE Reservation SET (?,?,?,?)";
-    }
-    
-    @Override
-    public LinkedList<Object> select(LinkedList<Object> keys) {
-        return null;
     }
     
     /**

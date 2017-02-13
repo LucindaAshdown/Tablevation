@@ -6,6 +6,16 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+/*this makes the food type and total number of seats select have some space below*/
+.btn-group{
+  padding-bottom: 2%;
+}
+/*opening and closing times*/
+
+
+
+/*rating stars code*/
+
 
 
 /*Placeholder font-size/button font-size*/
@@ -204,7 +214,7 @@ form>button {
 .form-module {
     position: relative;
     background: #ffffff;
-    max-width: 320px;
+    max-width: 620px;
     width: 100%;
     border-top: 5px solid #33b5e5;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -292,7 +302,7 @@ form>button {
     color: #333333;
 }
 
-.form-module button {
+.form-module #button-click {
     cursor: pointer;
     background: #33b5e5;
     width: 100%;
@@ -303,7 +313,7 @@ form>button {
     transition: 0.3s ease;
 }
 
-.form-module button:hover {
+.form-module #button-click:hover {
     background: #178ab4;
 }
 

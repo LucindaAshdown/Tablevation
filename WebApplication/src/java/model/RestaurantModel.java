@@ -7,6 +7,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Date;
@@ -39,7 +40,6 @@ public class RestaurantModel implements Model{
     private Date satClTime;
     private Date sunOpTime;
     private Date sunClTime;
-    
     private static RestaurantModel restaurantModel = null;
     
     /**
@@ -51,18 +51,17 @@ public class RestaurantModel implements Model{
        conn = Database.getConnection();
     }
     
-    public static RestaurantModel getInstance() throws SQLException, ClassNotFoundException{
-       if(restaurantModel == null)
-           restaurantModel = new RestaurantModel();
-       return restaurantModel;
+    public static RestaurantModel getInstance() throws ClassNotFoundException, SQLException{
+         if(restaurantModel == null)
+             restaurantModel = new RestaurantModel();
+         return restaurantModel;
     }
-    
     // METHODS INTERFACING WITH THE DATABASE //
     
     @Override
     public void insert() {
-        String query = "INSERT INTO Restaurant "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Restaurant"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.email);
@@ -70,55 +69,57 @@ public class RestaurantModel implements Model{
             ps.setString(3, this.name); /*name */
             ps.setString(4, this.addressLine1); /*Address line 1 */
             ps.setString(5, this.area); /*Area */
-            ps.setString(6, "Portsmouth"); /*City */
-            ps.setString(7, "Hampshire"); /*County */
+            ps.setString(6, this.city); /*City */
+            ps.setString(7, this.county); /*County */
             ps.setString(8, this.postCode); /*PostCode */
             ps.setInt(9, -1); /*Rating */
-            ps.setInt(10, -1);
+            ps.setInt(10, 0);
             ps.setString(11, this.contactNumber); /*Contact Number */
-            Time currentTime = new Time((new Date()).getTime());
-            ps.setTime(12, new Time(currentTime.getTime())); /* Monday to Friday Opening */
-            ps.setTime(13, new Time(currentTime.getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
-            ps.setTime(14, new Time(currentTime.getTime()));
-            ps.setTime(15, new Time(currentTime.getTime())); /* Saturday Closing Time */
-            ps.setTime(16, new Time(currentTime.getTime())); /* Sunday Opening Time */
-            ps.setTime(17, new Time(currentTime.getTime())); /* Sunday Closing Time */
+            Date currentDate = new Date();
+            Time currentTime = new Time(currentDate.getTime());
+            ps.setTime(12, currentTime); /* Monday to Friday Opening */
+            ps.setTime(13, currentTime); /* Monday to Friday Closing */
+            ps.setTime(14, currentTime); /* Saturday Opening Time */
+            ps.setTime(15, currentTime); /* Saturday Closing Time */
+            ps.setTime(16, currentTime); /* Sunday Opening Time */
+            ps.setTime(17, currentTime); /* Sunday Closing Time */
             ps.setString(18, this.foodType);
-            ps.setInt(19, this.totalNumberOfSeats);
-            
+            ps.setInt(19,this.totalNumberOfSeats);
             ps.executeUpdate();
             
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            
         }
         
     }
 
     @Override
     public void update() {
-        String query = "UPDATE Restaruant SET (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE Restaurant.email = ?";
+        String query = "UPDATE Restaruant SET (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE Restaurant.email = ?";
             try {
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, this.name); /*name */
-                ps.setString(2, this.addressLine1); /*Address line 1 */
-                ps.setString(3, this.area); /*Area */
-                ps.setString(4, this.city); /*City */
-                ps.setString(5, this.county); /*County */
-                ps.setString(6, this.postCode); /*PostCode */
-                ps.setInt(7, this.rating); /*Rating */
-                ps.setString(8, this.contactNumber); /*Contact Number */
+                ps.setString(1, this.email);
+                ps.setString(2, this.password);
+                ps.setString(3, this.name); /*name */
+                ps.setString(4, this.addressLine1); /*Address line 1 */
+                ps.setString(5, this.area); /*Area */
+                ps.setString(6, this.city); /*City */
+                ps.setString(7, this.county); /*County */
+                ps.setString(8, this.postCode); /*PostCode */
+                ps.setInt(9, this.rating); /*Rating */
+                ps.setString(10, this.contactNumber); /*Contact Number */
                 Date currentDate = new Date();
                 Time currentTime = new Time(currentDate.getTime());
-                ps.setTime(9, new Time(this.monFriOpTime.getTime())); /* Monday to Friday Opening */
-                ps.setTime(10, new Time(this.monFriClTime.getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
-                ps.setTime(11, new Time(this.satOpTime.getTime()));
-                ps.setTime(12, new Time(this.satClTime.getTime())); /* Saturday Closing Time */
-                ps.setTime(13, new Time(this.sunOpTime.getTime())); /* Sunday Opening Time */
-                ps.setTime(14, new Time(this.sunClTime.getTime())); /* Sunday Closing Time */
-                ps.setString(15, this.foodType);
-                ps.setInt(16, this.totalNumberOfSeats);
+                ps.setTime(11, new Time(this.monFriOpTime.getTime())); /* Monday to Friday Opening */
+                ps.setTime(12, new Time(this.monFriClTime.getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
+                ps.setTime(13, new Time(this.satOpTime.getTime()));
+                ps.setTime(14, new Time(this.satClTime.getTime())); /* Saturday Closing Time */
+                ps.setTime(15, new Time(this.sunOpTime.getTime())); /* Sunday Opening Time */
+                ps.setTime(16, new Time(this.sunClTime.getTime())); /* Sunday Closing Time */
+                ps.setString(17, this.foodType);
+                ps.setInt(18, this.totalNumberOfSeats);
                 
-                ps.setString(17, this.email); /* where statement email */
+                ps.setString(19, this.email); /* where statement email */
                 
                 ps.executeUpdate();
                 conn.commit();
@@ -128,10 +129,15 @@ public class RestaurantModel implements Model{
         }
         
     }
-
-    @Override
-    public LinkedList<Object> select(LinkedList<Object> keys) {
-        return null;
+    
+    public boolean isPresentAccountIntoDb(String email,String password) throws SQLException{
+           String query = "SELECT Restaurant_email,Restaurant_password FROM Restaurant WHERE Restaurant_email=? AND Restaurant_password=?";
+           PreparedStatement ps = conn.prepareStatement(query);
+           ps.setString(1, email);
+           ps.setString(2, password);
+           ResultSet rs = ps.executeQuery();
+           // if the result set is not empty it returns true
+           return rs.next();
     }
     
     /**
@@ -140,14 +146,6 @@ public class RestaurantModel implements Model{
      */    
     public LinkedList<RestaurantModel> selectByArea(String area){
         return null;
-    }
-    
-    /**
-     * @param foodType parameter used to find restaurants having has attribute the area
-     * @return the list of restaurants belonging to the selected area
-     */  
-    public LinkedList<RestaurantModel> selectByFoodType(String foodType){
-        return null;    
     }
     
     // GETTERS AND SETTERS //
