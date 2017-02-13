@@ -23,11 +23,4 @@ public interface Model {
      * implements the model interface 
      */
     public void update();
-    
-    /**
-     * @param keys the list of keys to be used in the query to select
-     * the objects from the database
-     * @return the list of the objects created after the query has been executed
-     */
-    public LinkedList<Object> select(LinkedList<Object> keys);
 }

@@ -1,12 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,9 +21,6 @@ import model.RestaurantModel;
  */
 @WebServlet(name = "RestaurantController", urlPatterns = {"/RestaurantController"})
 public class RestaurantController extends HttpServlet {
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -35,7 +33,7 @@ public class RestaurantController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -49,29 +47,45 @@ public class RestaurantController extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if("sign_up".equals(action)){
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            if(email != null && password != null){
+            String email = request.getParameter("Restaurant_Email");
+            String password = request.getParameter("Restaurant_Password");
+            String restaurantName = request.getParameter("Name");
+            String addressLine1 = request.getParameter("Address_Line1");
+            String area = request.getParameter("Area");
+            String postCode = request.getParameter("PostCode");
+            String contactNumber = request.getParameter("Contact_Number");
+            String foodType = request.getParameter("Food_Type");
+            String stringTotalNumberOfSeats = request.getParameter("Total_No_Seats");
+            
+            if(email != null && password != null && restaurantName != null &&  addressLine1 != null && area != null
+                    && postCode != null && contactNumber != null && foodType != null && stringTotalNumberOfSeats != null){
                 try{
-                    RestaurantModel resModel = new RestaurantModel();
+                    int totalNumberOfSeats = Integer.parseInt(stringTotalNumberOfSeats);
+                    RestaurantModel resModel = RestaurantModel.getInstance();
                     resModel.setEmail(email);
                     resModel.setPassword(password);
+                    resModel.setName(restaurantName);
+                    resModel.setAddressLine1(addressLine1);
+                    resModel.setArea(area);
+                    resModel.setPostCode(postCode);
+                    resModel.setContactNumber(contactNumber);
+                    resModel.setFoodType(foodType);
+                    resModel.setTotalNumberOfSeats(totalNumberOfSeats);
                     resModel.insert();
-                    }catch(Exception e){
-                        
-                    }
+                    
+                    RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                    view.forward(request, response);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
             }
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
+    public boolean login(String password,String email) throws ClassNotFoundException, SQLException{
+        RestaurantModel resModel = RestaurantModel.getInstance();
+        return resModel.isPresentAccountIntoDb(email,password);
+    }
 
 }

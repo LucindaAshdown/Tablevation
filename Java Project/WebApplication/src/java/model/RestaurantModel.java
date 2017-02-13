@@ -7,12 +7,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * A class that manages Restaurant data
@@ -41,46 +40,52 @@ public class RestaurantModel implements Model{
     private Date satClTime;
     private Date sunOpTime;
     private Date sunClTime;
+    private static RestaurantModel restaurantModel = null;
     
     /**
-     * constructor that connect the class to the database
+     * constructor
+     * @throws ClassNotFoundException
      * @throws SQLException
-     * @throws ClassNotFoundException 
      */
-    public RestaurantModel() throws SQLException, ClassNotFoundException{
+    private RestaurantModel() throws ClassNotFoundException, SQLException{
        conn = Database.getConnection();
     }
     
+    public static RestaurantModel getInstance() throws ClassNotFoundException, SQLException{
+         if(restaurantModel == null)
+             restaurantModel = new RestaurantModel();
+         return restaurantModel;
+    }
     // METHODS INTERFACING WITH THE DATABASE //
     
     @Override
     public void insert() {
-        String query = "INSERT INTO Restaurant "
+        String query = "INSERT INTO Restaurant"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.email);
             ps.setString(2, this.password);
-            ps.setString(3, ""); /*name */
-            ps.setString(4, ""); /*Address line 1 */
-            ps.setString(5, ""); /*Area */
-            ps.setString(6, ""); /*City */
-            ps.setString(7, ""); /*County */
-            ps.setString(8, ""); /*PostCode */
-            ps.setInt(9, 1); /*Rating */
-            ps.setString(10, ""); /*Contact Number */
+            ps.setString(3, this.name); /*name */
+            ps.setString(4, this.addressLine1); /*Address line 1 */
+            ps.setString(5, this.area); /*Area */
+            ps.setString(6, this.city); /*City */
+            ps.setString(7, this.county); /*County */
+            ps.setString(8, this.postCode); /*PostCode */
+            ps.setInt(9, -1); /*Rating */
+            ps.setInt(10, 0);
+            ps.setString(11, this.contactNumber); /*Contact Number */
             Date currentDate = new Date();
             Time currentTime = new Time(currentDate.getTime());
-            ps.setTime(11, currentTime); /* Monday to Friday Opening */
-            ps.setTime(12, currentTime); /* Monday to Friday Closing */
-            ps.setTime(13, currentTime); /* Saturday Opening Time */
-            ps.setTime(14, currentTime); /* Saturday Closing Time */
-            ps.setTime(15, currentTime); /* Sunday Opening Time */
-            ps.setTime(16, currentTime); /* Sunday Closing Time */
-            ps.setString(17, "Default");
-            ps.setInt(18, 1);
+            ps.setTime(12, currentTime); /* Monday to Friday Opening */
+            ps.setTime(13, currentTime); /* Monday to Friday Closing */
+            ps.setTime(14, currentTime); /* Saturday Opening Time */
+            ps.setTime(15, currentTime); /* Saturday Closing Time */
+            ps.setTime(16, currentTime); /* Sunday Opening Time */
+            ps.setTime(17, currentTime); /* Sunday Closing Time */
+            ps.setString(18, this.foodType);
+            ps.setInt(19,this.totalNumberOfSeats);
             ps.executeUpdate();
-            conn.commit();
             
         } catch (SQLException ex) {
             
@@ -124,10 +129,15 @@ public class RestaurantModel implements Model{
         }
         
     }
-
-    @Override
-    public LinkedList<Object> select(LinkedList<Object> keys) {
-        return null;
+    
+    public boolean isPresentAccountIntoDb(String email,String password) throws SQLException{
+           String query = "SELECT Restaurant_email,Restaurant_password FROM Restaurant WHERE Restaurant_email=? AND Restaurant_password=?";
+           PreparedStatement ps = conn.prepareStatement(query);
+           ps.setString(1, email);
+           ps.setString(2, password);
+           ResultSet rs = ps.executeQuery();
+           // if the result set is not empty it returns true
+           return rs.next();
     }
     
     /**
@@ -136,14 +146,6 @@ public class RestaurantModel implements Model{
      */    
     public LinkedList<RestaurantModel> selectByArea(String area){
         return null;
-    }
-    
-    /**
-     * @param foodType parameter used to find restaurants having has attribute the area
-     * @return the list of restaurants belonging to the selected area
-     */  
-    public LinkedList<RestaurantModel> selectByFoodType(String foodType){
-        return null;    
     }
     
     // GETTERS AND SETTERS //

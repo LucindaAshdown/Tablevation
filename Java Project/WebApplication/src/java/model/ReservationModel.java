@@ -24,14 +24,21 @@ public class ReservationModel implements Model{
     private Date bookedTime;
     private int numberOfGuests;
     private String details;
-
+    private static ReservationModel reservationModel = null;
+    
     /**
      * constructor
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public ReservationModel() throws ClassNotFoundException, SQLException{
+    private ReservationModel() throws ClassNotFoundException, SQLException{
        conn = Database.getConnection();
+    }
+    
+    public static ReservationModel getInstance() throws ClassNotFoundException, SQLException{
+         if(reservationModel == null)
+             reservationModel = new ReservationModel();
+         return reservationModel;
     }
     
     // METHODS INTERFACING WITH THE DATABASE //
@@ -46,11 +53,6 @@ public class ReservationModel implements Model{
     public void update() {
         PreparedStatement ps;
         String query = "UPDATE Reservation SET (?,?,?,?)";
-    }
-    
-    @Override
-    public LinkedList<Object> select(LinkedList<Object> keys) {
-        return null;
     }
     
     /**
