@@ -106,10 +106,18 @@
             <h2>Create your restaurant account</h2>
             <form method="post">
                 <input type="text" placeholder="Email" name="Restaurant_Email" required=""/>
-                <input type="password" placeholder="Password" name="Retaurant_Password" required=""/>
+                <input type="password" placeholder="Password" name="Restaurant_Password" required=""/>
                 <input type="text" placeholder="Restaurant Name" required="" name="Name"/>
-                <input type="text" placeholder="Address Line 1" required="" name="Address_Line1"/>
-                <input type="text" placeholder="Area" required="" name="Area" />
+                <input type="text" placeholder="Address Line 1" required="" name="Address_Line1" />
+                
+                <select class="selectpicker" name="Area" required="" data-live-search="true" title="Please select an Area" data-width="100%">
+                  <option>Gunwharf </option>
+                  <option>Southsea </option>
+                  <option>Fratton</option>
+                  <option>Old Portsmouth</option>
+                  <option>Eastney</option>
+                  <option>Cosham</option>
+                </select>
 
                 <input type="text" placeholder="Post Code" required="" name="PostCode" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" />
 
@@ -127,8 +135,8 @@
                 </select>
 
                 <input type="number" min="1" max="40" name="Total_No_Seats" value="" placeholder="Total number of seats" required="">
-                <input type="hidden" name="action" value="sign_up">
-                <button id="button-click" type="submit" formaction="RestaurantController">Register</button>
+                <input type="hidden" name="action" value="sign_up"/>
+                <button id="button-click" formaction="RestaurantController">Register</button>
             </form>
 
         </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <title>Tablevation - Make Reservation</title>
@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Jamie Toloui">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <link href="css/makeBooking.css" rel="stylesheet">
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
@@ -14,6 +15,7 @@
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
+    <link rel="stylesheet" type="text/css" href="dist/bootstrap-clockpicker.min.css">
 
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
@@ -74,11 +76,15 @@
             color: red;
         }
     </style>
+=======
+    <link href="css/home.css" rel="stylesheet">
+>>>>>>> origin/master
 
 </head>
 
 <body>
 
+<<<<<<< HEAD
     <div class="navbar-wrapper">
         <div class="container">
 
@@ -173,22 +179,23 @@
                                         Must be a valid email address.
                                     </div>
                                 </div> -->
-                                <div class="well">
-                                  <div id="datetimepicker3" class="input-append">
-                                    <input data-format="hh:mm:ss" type="text"/>
-                                    <span class="add-on">
-                                      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                      </i>
+
+                                <div class="input-group clockpicker">
+                                    <input type="text" class="form-control" value="HH:MM:SS">
+                                    <span class="input-group-addon">
+                                      <span class="glyphicon glyphicon-time"></span>
                                     </span>
-                                  </div>
                                 </div>
+
+
+
                                 <div>
                                     <label for="Booked_Date">Reservation date</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" />
+                                        <input class="form-control" id="date" name="Booked_Date" placeholder="MM/DD/YYYY" type="text" />
                                     </div>
                                 </div>
 
@@ -292,7 +299,7 @@
 
 
         $(document).ready(function() {
-            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var date_input = $('input[name="Booked_Date"]'); //our date input has the name "date"
             var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
             date_input.datepicker({
                 format: 'mm/dd/yyyy',
@@ -300,8 +307,29 @@
                 todayHighlight: true,
                 autoclose: true,
             })
+
+
         })
+
+
+        $('.clockpicker').clockpicker({
+            placement: 'top',
+            align: 'left',
+            donetext: 'Done'
+        });
     </script>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript" src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript" src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -321,6 +349,7 @@
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
+    <script type="text/javascript" src="js/bootstrap-clockpicker.min.js"></script>
 
     <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
     <!-- Include jQuery -->
@@ -328,7 +357,13 @@
 
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+=======
 
+
+    <footer>
+>>>>>>> origin/master
+
+    </footer>
 </body>
 
 </html>

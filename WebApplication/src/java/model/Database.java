@@ -8,13 +8,13 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 /**
  *
- * @author Francesco David Nota
+ * @author Nota
  */
 public class Database {
+    
     /**
      * @return a new connection from the database
      * @throws SQLException 
