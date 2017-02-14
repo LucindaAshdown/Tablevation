@@ -104,12 +104,12 @@
         </div>
         <div class="form">
             <h2>Create your restaurant account</h2>
-            <form action = " RestaurantController.java" method="post">
+            <form action = "RestaurantController.java" method="post">
                 <input type="text" placeholder="Email" name="Restaurant_Email" required=""/>
                 <input type="password" placeholder="Password" name="Restaurant_Password" required=""/>
                 <input type="text" placeholder="Restaurant Name" required="" name="Name"/>
                 <input type="text" placeholder="Address Line 1" required="" name="Address_Line1" />
-                <!-- testing
+                
                 <select class="selectpicker" name="Area" required="" data-live-search="true" title="Please select an Area" data-width="100%">
                   <option>Gunwharf </option>
                   <option>Southsea </option>
@@ -118,14 +118,11 @@
                   <option>Eastney</option>
                   <option>Cosham</option>
                 </select>
-                -->
-                <input type="text" placeholder="Area" required="" name="Area" />
+
                 <input type="text" placeholder="Post Code" required="" name="PostCode" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" />
 
                 <input type="text" required="" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder="Phone number">
-                
-                <input type="text" placeholder="Food Type" required="" name="Food_Type" />
-                <!-- testing
+
                 <select class="selectpicker" name="Food_Type" required="" data-live-search="true" title="Please select the type of food"  data-width="100%">
                   <option>British</option>
                   <option>Chinese</option>
@@ -136,10 +133,10 @@
                   <option>Thai</option>
                   <option>Spanish</option>
                 </select>
-                -->
+
                 <input type="number" min="1" max="40" name="Total_No_Seats" value="" placeholder="Total number of seats" required="">
                 <input type="hidden" name="action" value="sign_up"/>
-                <button class="button" formaction="RestaurantController">Register</button>
+                <button id="button-click" formaction="RestaurantController">Register</button>
             </form>
 
         </div>
