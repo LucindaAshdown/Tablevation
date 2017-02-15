@@ -47,8 +47,15 @@ public class ReservationModel implements Model{
     
     @Override
     public void insert() {
-        PreparedStatement ps;
-        String query = "INSERT INTO Reservation VALUES (?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Reservation VALUES (?,?,?,?,?,?)";
+        try{
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, this.restaurantName);
+            ps.setString(2, this.restaurantEmail);
+            ps.setString(3, )
+        }catch(Exception e){
+        
+    }
     }
 
     @Override
