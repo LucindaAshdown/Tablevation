@@ -52,7 +52,6 @@ public class ReservationModel implements Model{
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.restaurantName);
             ps.setString(2, this.restaurantEmail);
-            ps.setString(3, )
         }catch(Exception e){
         
     }
