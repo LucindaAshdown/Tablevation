@@ -1,185 +1,244 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <title>Tablevation - Login</title>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="author" content="Jamie Toloui">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/login.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/validatr.min.js"></script>
-        
-        
-        
-        <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-        
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
+
+<head>
+    <title>Tablevation - Create Restaurant Account</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="Jamie Toloui">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/login.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/validatr.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-    </head>
-    
-    <body>
-        
-        <div class="navbar-wrapper">
-            <div class="container">
-                
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            
-                            <a class="navbar-brand" href="#">
-                                <img alt="Tablevation logo" src="img/logo.jpg" width="90" height="30">
-                            </a>
-                            
-                            <a class="navbar-brand" href="#">Tablevation</a>
-                        </div>
-                        
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active"><a href="login.html">Login <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#Bottom">More Information</a></li>
-                                <li><a href="CreateCustomerAccount.html">Create Customer Account</a></li>
-                                <li><a href="CreateRestaurantAccount.html">Create Restaurant Account</a></li>
-                                <!-- Drop dropdown code -->
-                                <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li> -->
-                            </ul>
-                            <!-- This is the code for links on the right side of the nav bar -->
-                            <!-- <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
-        </ul> -->
-                        </div>
-                        <!-- /.navbar-collapse -->
-                    </div>
-                    <!-- /.container-fluid -->
-                </nav>
-                
-            </div>
-        </div>
-        
-        
-        <div class="pen-title">
-            <h1>Welcome to Tablevation</h1>
-            <!--<span>Pen <i class="fa fa-paint-brush"></i> + <i class="fa fa-code"></i> by <a href="http://andytran.me">Andy Tran</a></span> -->
-        </div>
-        <!-- Form Module-->
-        <div class="module form-module">
-            <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-                <!-- When this is uncommented the page has an overflow -->
-                <!-- <div id="overflow-fix" class="tooltip">Create Account</div> -->
-            </div>
-            <div class="form" id="login-form">
-                <h2>Login to your account</h2>
-                <form method="post" name="login" autocomplete="on">
-                    <div>
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder=" " />
-                        <div class="requirements">
-                            Must be a valid email address.
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required="" placeholder=" " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
-                        
-                        <div class="requirements">
-                            Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.
-                        </div>
-                    </div>
-                    
-                    <!-- <input type="text" placeholder="Username" name="username" />
-                    <input type="password" placeholder="Password" name="password"/>
-                    <label class="control control--radio">Owner
-                                  <input type="radio" name="login-type" value="owner" required/>
-                                    <div class="control__indicator"></div>
-                        </label>
-                    <label class="control control--radio">Customer
-                      <input type="radio" name="login-type" value="customer" required=""/>
-                      <div class="control__indicator"></div>
-                    </label> -->
-                    <input type="hidden" name="action" value="login"/>
-                    <button class="button" type="submit" formaction="Controller">Login</button>
-                    
-                    <h2>Choose your account type to create</h2>
-                    <label class="control control--radio">Owner
-                        <input type="radio" name="type_of_user" value="restaurant" required/>
-                        <div class="control__indicator"></div>
-                    </label>
-                    <label class="control control--radio">Customer
-                        <input type="radio" name="type_of_user" value="customer" required/>
-                        <div class="control__indicator"></div>
-                    </label>
-                    
-                    
-                </form>
-            </div>
-            <div class="cta"><a href="#">Forgot your password?</a></div>
-            <div class="cta"><a href="index.html">Home</a></div>
-        </div>
-        
-        
-        <footer>
-        </footer>
-        <!-- Toggles the form to change between login/create account  -->
-        <script>
-            // Toggle Function
-            $(".toggle").click(function() {
-                // Switches the Icon
-                $(this).children("i").toggleClass("fa-pencil");
-                // Switches the forms
-                $(".form").animate({
-                    height: "toggle",
-                    "padding-top": "toggle",
-                    "padding-bottom": "toggle",
-                    opacity: "toggle"
-                }, "slow");
-            });
 
-            jQuery(function($) {
-                $('form').validatr();
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  <div class="navbar-wrapper">
+      <div class="container">
+
+          <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+                      <a class="navbar-brand" href="#">
+                          <img alt="Tablevation logo" src="img/logo.jpg" width="90" height="30">
+                      </a>
+
+                      <a class="navbar-brand" href="index.html">Tablevation</a>
+                  </div>
+
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                          <li><a href="index.html">Home</a></li>
+                          <li class="active"><a href="login.html">Login  <span class="sr-only">(current)</span></a></li>
+                          <li><a href="#Bottom">More Information</a></li>
+                          <li><a href="CreateCustomerAccount.html">Create Customer Account</a></li>
+                          <li><a href="CreateRestaurantAccount.html">Create Restaurant Account</a></li>
+                          <!-- Drop dropdown code -->
+                          <!-- <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">One more separated link</a></li>
+        </ul>
+      </li> -->
+                      </ul>
+                      <!-- This is the code for links on the right side of the nav bar -->
+                      <!-- <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Link</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+    </ul> -->
+                  </div>
+                  <!-- /.navbar-collapse -->
+              </div>
+              <!-- /.container-fluid -->
+          </nav>
+
+      </div>
+  </div>
+
+    <div class="pen-title">
+        <h1>Welcome to Tablevation</h1>
+        <!--<span>Pen <i class="fa fa-paint-brush"></i> + <i class="fa fa-code"></i> by <a href="http://andytran.me">Andy Tran</a></span> -->
+    </div>
+    <!-- Form Module-->
+    <div class="module form-module">
+        <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+            <!-- When this is uncommented the page has an overflow -->
+            <!-- <div id="overflow-fix" class="tooltip">Create Account</div> -->
+        </div>
+        <div class="form" id="login-form">
+            <h2>Login to your account</h2>
+            <form name="login" autocomplete="on">
+                <!-- <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder=" " />
+                    <div class="requirements">
+                        Must be a valid email address.
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required="" placeholder=" " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
+
+                    <div class="requirements">
+                        Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.
+                    </div>
+                </div> -->
+
+                <!-- <input type="text" placeholder="Username" name="username" />
+                <input type="password" placeholder="Password" name="password"/>
+                 -->
+
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="username" placeholder=" " />
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"  placeholder=" " />
+
+                </div>
+                
+                <label class="control control--radio">Owner
+  		              <input type="radio" name="login-type" value="owner" required/>
+  		                <div class="control__indicator"></div>
+  	            </label>
+                <label class="control control--radio">Customer
+                  <input type="radio" name="login-type" value="customer" required=""/>
+                  <div class="control__indicator"></div>
+                </label>
+                <button class="button" type="submit" formaction="index.html">Login</button>
+            </form>
+
+        </div>
+        <div class="form">
+            <h2>Choose your account type to create</h2>
+            <form>
+                <label class="control control--radio">Owner
+  		              <input type="radio" name="login-type" value="owner-reg" required/>
+  		                <div class="control__indicator"></div>
+  	            </label>
+                <label class="control control--radio">Customer
+                  <input type="radio" name="login-type" value="customer-reg" required/>
+                  <div class="control__indicator"></div>
+                </label>
+
+
+            </form>
+        </div>
+        <div class="cta"><a href="#">Forgot your password?</a></div>
+        <div class="cta"><a href="index.html">Home</a></div>
+    </div>
+
+
+    <footer>
+    </footer>
+    <!-- Toggles the form to change between login/create account  -->
+    <script>
+        // Toggle Function
+        $(".toggle").click(function() {
+            // Switches the Icon
+            $(this).children("i").toggleClass("fa-pencil");
+            // Switches the forms
+            $(".form").animate({
+                height: "toggle",
+                "padding-top": "toggle",
+                "padding-bottom": "toggle",
+                opacity: "toggle"
+            }, "slow");
+        });
+
+        $(function() {
+            $("input[name$='login-type']").click(function() {
+                var value = $(this).val();
+                if (value == 'owner-reg') {
+                    window.location.assign("CreateRestaurantAccount.html");
+                } else if (value == 'customer-reg') {
+                    window.location.assign("CreateCustomerAccount.html");
+                }
+
             });
-        </script>
-    </body>
-    
+        });
+
+        jQuery(function($) {
+            $('form').validatr();
+        });
+    </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+</body>
+
 </html>
