@@ -19,6 +19,9 @@ body {
 }
 
 
+textarea {
+    resize: none;
+}
 /*opening and closing times*/
 
 
