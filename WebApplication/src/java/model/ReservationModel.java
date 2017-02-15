@@ -47,15 +47,23 @@ public class ReservationModel implements Model{
     
     @Override
     public void insert() {
-        String query = "INSERT INTO Reservation VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO Reservation (Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Date,No_Guests,Details)"
+                + " VALUES (?,?,?,?,?,?)";
         try{
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.restaurantName);
             ps.setString(2, this.restaurantEmail);
-            ps.setString(3, )
-        }catch(Exception e){
-        
-    }
+            ps.setString(3, this.customerEmail);
+            Timestamp bookedDate = new Timestamp(this.bookedDate.getTime());
+            ps.setTimestamp(4, bookedDate);
+            ps.setInt(5, this.numberOfGuests);
+            ps.setString(6, this.details);
+            
+            ps.executeUpdate();
+        }
+        catch(Exception e){
+            
+        }
     }
 
     @Override
@@ -175,7 +183,7 @@ public class ReservationModel implements Model{
     }
 
     /**
-     * @param bookedTime the bookedTime to set
+     * @param bookedDate the bookedTime to set
      */
     public void setBookedDate(Date bookedDate) {
         this.bookedDate = bookedDate;
