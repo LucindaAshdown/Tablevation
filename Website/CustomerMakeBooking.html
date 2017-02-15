@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 
 
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
@@ -130,20 +131,6 @@
                             <li><a href="EditCustomerAccount.html">Edit Account</a></li>
                             <li><a href="index.html">Log out</a></li>
                         </ul>
-                        <!-- This is the code for links on the right side of the nav bar -->
-                        <!-- <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul> -->
                     </div>
                     <!-- /.navbar-collapse -->
                 </div>
@@ -187,7 +174,7 @@
 
                                 <div>
                                     <label for="Area">Please a time</label>
-                                    <select class="selectpicker" type="text" name="Booked_Date" required="" title="Please a time" data-width="100%">
+                                    <select class="selectpicker" type="text" name="Booked_Date" data-live-search="true" required="" title="Please a time" data-width="100%">
                                     <option>12:00PM</option>
                                     <option>12:30PM</option>
                                     <option>13:00PM</option>
@@ -319,6 +306,10 @@
         window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     </script>
 
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="js/holder.min.js"></script>
@@ -326,10 +317,6 @@
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
 
     <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
     <!-- Include jQuery -->
