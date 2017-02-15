@@ -1,21 +1,30 @@
 body {
-    background: #e9e9e9;
+    background-color: #e9e9e9;
     color: #666666;
-
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+
 /*this makes the food type and total number of seats select have some space below*/
-.btn-group{
-  padding-bottom: 2%;
+
+
+
+.btn-group {
+    padding-bottom: 2%;
 }
+
+.img-size {
+    width: 200px;
+    height: 130px;
+}
+
+
 /*opening and closing times*/
 
 
-
 /*rating stars code*/
-
 
 
 /*Placeholder font-size/button font-size*/
@@ -214,26 +223,11 @@ form>button {
 .form-module {
     position: relative;
     background: #ffffff;
-    max-width: 620px;
+    max-width: 1024px;
     width: 100%;
     border-top: 5px solid #33b5e5;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
-}
-
-.form-module .toggle {
-    cursor: pointer;
-    position: absolute;
-    top: -0;
-    right: -0;
-    background: #33b5e5;
-    width: 30px;
-    height: 30px;
-    margin: -5px 0 0;
-    color: #ffffff;
-    font-size: 12px;
-    line-height: 30px;
-    text-align: center;
 }
 
 .form-module .toggle .tooltip {
@@ -287,7 +281,7 @@ form>button {
     width: 100%;
     border-bottom: 2px solid #33b5e5;
     margin: 0 0 20px;
-    padding: 10px 15px;
+    padding: 20px 20px 20px 50px;
     box-sizing: border-box;
     font-wieght: 400;
     -webkit-transition: 0.3s ease;
@@ -330,101 +324,4 @@ form>button {
 .form-module .cta a {
     color: #333333;
     text-decoration: none;
-}
-
-/*This is the code for the form validation*/
-form > div {
-  position: relative;
-  background: white;
-  border-bottom: 1px hidden #ccc;
-}
-/*form > div > label {
-  opacity: 0.3;
-  font-weight: bold;
-  position: absolute;
-  top: 22px;
-  left: 20px;
-}*/
-form > div > input[type="text"],
-form > div > input[type="email"],
-form > div > input[type="password"],
-form > div > input[type="number"],
-form > div > select {
-
-
-  border: 0;
-  outline: none;
-  display: block;
-  width: 100%;
-  border-bottom: 2px solid #33b5e5;
-  margin: 0 0 20px;
-  padding: 20px 20px 20px 50px;
-  box-sizing: border-box;
-  font-wieght: 400;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-form > div > input[type="text"]:focus,
-form > div > input[type="email"]:focus,
-form > div > input[type="password"]:focus,
-form > div > input[type="number"]:focus,
-form > div > select:focus {
-  outline: 0;
-  background: white;
-}
-form > div > input[type="text"]:focus + label,
-form > div > input[type="email"]:focus + label,
-form > div > input[type="password"]:focus + label,
-form > div > input[type="number"]:focus + label,
-form > div > select:focus + label {
-  opacity: 0;
-}
-form > div > input[type="text"]:valid,
-form > div > input[type="email"]:valid,
-form > div > input[type="password"]:valid,
-form > div > input[type="number"]:valid,
-form > div > select:valid {
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg);
-  background-size: 20px;
-  background-repeat: no-repeat;
-  background-position: 20px 20px;
-}
-form > div > input[type="text"]:valid + label,
-form > div > input[type="email"]:valid + label,
-form > div > input[type="password"]:valid + label,
-form > div > input[type="number"]:valid + label,
-form > div > select:valid + label {
-  opacity: 0;
-}
-form > div > input[type="text"]:invalid:not(:focus):not(:placeholder-shown),
-form > div > input[type="email"]:invalid:not(:focus):not(:placeholder-shown),
-form > div > input[type="password"]:invalid:not(:focus):not(:placeholder-shown),
-form > div > input[type="number"]:invalid:not(:focus):not(:placeholder-shown),
-form > div > select:invalid:not(:focus):not(:placeholder-shown) {
-  background: pink;
-}
-form > div > input[type="text"]:invalid:not(:focus):not(:placeholder-shown) + label,
-form > div > input[type="email"]:invalid:not(:focus):not(:placeholder-shown) + label,
-form > div > input[type="password"]:invalid:not(:focus):not(:placeholder-shown) + label,
-form > div > input[type="number"]:invalid:not(:focus):not(:placeholder-shown) + label,
-form > div > select:invalid:not(:focus):not(:placeholder-shown) + label {
-  opacity: 0;
-}
-form > div > input[type="text"]:invalid:focus:not(:placeholder-shown) ~ .requirements,
-form > div > input[type="email"]:invalid:focus:not(:placeholder-shown) ~ .requirements,
-form > div > input[type="password"]:invalid:focus:not(:placeholder-shown) ~ .requirements,
-form > div > input[type="number"]:invalid:focus:not(:placeholder-shown) ~ .requirements,
-form > div > select:invalid:focus:not(:placeholder-shown) ~ .requirements {
-  max-height: 200px;
-  padding: 0 30px 20px 50px;
-}
-form > div .requirements {
-  padding: 0 30px 0 50px;
-  color: #999;
-  max-height: 0;
-  -webkit-transition: 0.28s;
-  transition: 0.28s;
-  overflow: hidden;
-  color: red;
-  font-style: italic;
 }

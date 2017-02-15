@@ -76,6 +76,7 @@ public class ReservationModel implements Model{
      * @param email the unique email of the customer who wants to see the
      * reservations he made
      * @return the list of reservations made by the customer
+     * @throws java.sql.SQLException
      */
     public LinkedList<ReservationModel> selectAllReservationByCustomerEmail(String email) throws SQLException{
         String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Time,Booked_Date,No_Guests,Details FROM Reservation "
