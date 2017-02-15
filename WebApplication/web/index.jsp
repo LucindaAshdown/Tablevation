@@ -4,11 +4,11 @@
     Author     : Jamie
     Author     : Nota
 --%>
-    
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    
+
 <html>
-    
+
     <head>
         <title>Tablevation - Home</title>
         <meta charset="utf-8">
@@ -17,19 +17,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-            
+
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-            
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <link href="css/carousel.css" rel="stylesheet">
-            
+
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
@@ -49,11 +49,11 @@
         <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
     </head>
-        
+
     <body>
         <div class="navbar-wrapper">
             <div class="container">
-                
+
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <!-- Brand and toggle get grouped for better mobile display -->
@@ -64,36 +64,48 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                                
+
                             <a class="navbar-brand" href="#">
                                 <img alt="Tablevation logo" src="img/logo.jpg" width="90" height="30">
                             </a>
-                                
+
                             <a class="navbar-brand" href="#">Tablevation</a>
                         </div>
-                            
+
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
-                                <% 
-                                HttpSession sess = request.getSession();
-                                String sessEmail = (String) request.getParameter("email");
-                                if(sessEmail == null){
-                                %>
+                                    <%
+                                        HttpSession sess = request.getSession();
+                                        String sessEmail = (String) request.getParameter("email");
+                                        if (sessEmail == null) {
+                                    %>
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="CreateCustomerAccount.html">Create Customer Account</a></li>
                                 <li><a href="CreateRestaurantAccount.html">Create Restaurant Account</a></li>
-                                <% 
-                                }
-                                else{
-                                %>
-                                <li><a href="#Bottom">My account</a></li>
-                                <li><a href="#Bottom">Reservations</a></li>
-                                <%
-                                }
-                                %>
-                                <li><a href="#Bottom">More Information</a></li>
+                                    <%
+                                    } else {
+                                    %>
+                                <li class="dropdown active">
+                                    <a href="CustomerSearchRestaurants.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search Restaurants<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="CustomerSearchRestaurants.html">Gunwharf</a></li>
+                                        <li><a href="CustomerSearchRestaurants.html">Fratton</a></li>
+                                        <li><a href="CustomerSearchRestaurants.html">Southsea</a></li>
+                                        <li><a href="CustomerSearchRestaurants.html">Old Portsmouth</a></li>
+                                        <li><a href="CustomerSearchRestaurants.html">Eastney</a></li>
+                                        <li><a href="CustomerSearchRestaurants.html">Cosham</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="CustomerMakeBooking.html">Make Booking</a></li>
+                                <li><a href="CustomerViewReservations.html">View Bookings</a></li>
+                                <li><a href="CustomerAmendReservation.html">Amend Bookings</a></li>
+                                <li><a href="EditCustomerAccount.html">Edit Account</a></li>
+                                <li><a href="index.html">Log out</a></li>
+                                    <%
+                                        }
+                                    %>
                                 <!-- Drop dropdown code -->
                                 <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -127,11 +139,11 @@
                     </div>
                     <!-- /.container-fluid -->
                 </nav>
-                    
+
             </div>
         </div>
-            
-            
+
+
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -145,12 +157,12 @@
                     <div class="container">
                         <div class="carousel-caption">
                             <!--<p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p> -->
-                            <% 
-                            if(sessEmail == null){
+                            <%
+                                if (sessEmail == null) {
                             %>  
-                               <p><a class="btn btn-lg btn-primary" href="login.html" role="button">Sign up/Login today</a></p> 
-                            <%    
-                            }
+                            <p><a class="btn btn-lg btn-primary" href="login.html" role="button">Sign up/Login today</a></p> 
+                            <%
+                                }
                             %>
                         </div>
                     </div>
@@ -159,12 +171,12 @@
                     <img class="second-slide" src="img/Restaurant2img.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <% 
-                            if(sessEmail == null){
+                            <%
+                                if (sessEmail == null) {
                             %>  
-                               <p><a class="btn btn-lg btn-primary" href="login.html" role="button">Sign up/Login today</a></p> 
-                            <%    
-                            }
+                            <p><a class="btn btn-lg btn-primary" href="login.html" role="button">Sign up/Login today</a></p> 
+                            <%
+                                }
                             %>
                         </div>
                     </div>
@@ -173,12 +185,12 @@
                     <img class="third-slide" src="img/Restaurant3img.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <% 
-                            if(sessEmail == null){
+                            <%
+                                if (sessEmail == null) {
                             %>  
-                               <p><a class="btn btn-lg btn-primary" href="login.html" role="button">Sign up/Login today</a></p> 
-                            <%    
-                            }
+                            <p><a class="btn btn-lg btn-primary" href="login.html" role="button">Sign up/Login today</a></p> 
+                            <%
+                                }
                             %>
                         </div>
                     </div>
@@ -194,20 +206,20 @@
             </a>
         </div>
         <!-- /.carousel -->
-            
-            
-            
+
+
+
         <!-- Marketing messaging and featurettes
       ================================================== -->
         <!-- Wrap the rest of the page in another container to center all the content. -->
-            
+
         <div class="container marketing">
-            
+
             <!-- Three columns of text below the carousel -->
             <div class="row">
                 <%
                     String typeOfUser = (String) sess.getAttribute("type_of_user");
-                    if(sessEmail != null && typeOfUser.equals("customer")){ 
+                    if (sessEmail != null && typeOfUser.equals("customer")) {
                 %>
                 <form method="post">
                     <div class="col-lg-4">
@@ -227,10 +239,10 @@
                     </div>
                 </form>
                 <%
-                }
+                    }
                 %>
                 <%
-                if(sessEmail == null){
+                    if (sessEmail == null) {
                 %>
                 <!-- /.col-lg-4 -->
                 <div class="col-lg-4">
@@ -248,28 +260,28 @@
                 </div>
                 <!-- /.col-lg-4 -->
                 <%
-                }
+                    }
                 %>
             </div>
             <!-- /.row -->
-                
-                
+
+
             <!-- START THE FEATURETTES -->
-                
+
             <!-- FOOTER -->
             <footer>
                 <a name="Bottom">
                     <p class="pull-right"><a href="#">Back to top</a></p>
                     <p>Tablevation &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </footer>
-                
+
         </div>
         <!-- /.container -->
-            
-            
-            
+
+
+
         <footer>
-            
+
         </footer>
         <!-- Bootstrap core JavaScript
         ================================================== -->
@@ -286,5 +298,5 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     </body>
-        
+
 </html>
