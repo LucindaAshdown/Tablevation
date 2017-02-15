@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -16,12 +18,12 @@ import java.util.LinkedList;
  */
 public class ReservationModel implements Model{
     
-    private final Connection conn;
+    private Connection conn;
     private int id;
     private String restaurantName;
     private String restaurantEmail;
     private String customerEmail;
-    private Date bookedTime;
+    private Date bookedDate;
     private int numberOfGuests;
     private String details;
     private static ReservationModel reservationModel = null;
@@ -31,13 +33,13 @@ public class ReservationModel implements Model{
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    private ReservationModel() throws ClassNotFoundException, SQLException{
-       conn = Database.getConnection();
-    }
+    private ReservationModel(){}
     
     public static ReservationModel getInstance() throws ClassNotFoundException, SQLException{
-         if(reservationModel == null)
+         if(reservationModel == null){
              reservationModel = new ReservationModel();
+             reservationModel.conn = Database.getConnection();
+         }
          return reservationModel;
     }
     
@@ -60,24 +62,44 @@ public class ReservationModel implements Model{
      * reservations he made
      * @return the list of reservations made by the customer
      */
-    public LinkedList<ReservationModel> selectAllReservationByCustomerEmail(String email){
-        PreparedStatement ps;
+    public LinkedList<ReservationModel> selectAllReservationByCustomerEmail(String email) throws SQLException{
         String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Time,Booked_Date,No_Guests,Details FROM Reservation "
-                + "               WHERE Customer_Email=?";
-        
-        return null;
+                + "WHERE Customer_Email=?";
+        return selectReservationsByEmail(email,query);
     }
     
     /**
      * @param email the unique email of the restaurant who wants to see the
      * reservations made by customers
      * @return the list of reservations received by a restaurant
+     * @throws java.sql.SQLException
      */
-    public LinkedList<ReservationModel> selectAllReservationByRestaurantEmail(String email){
-        PreparedStatement ps;
-        String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Time,Booked_Date,No_Guests,Details FROM Reservation "
-                + "               WHERE Customer_Email=?";
-        return null;
+    public LinkedList<ReservationModel> selectAllReservationByRestaurantEmail(String email) throws SQLException{
+        String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Date,No_Guests,Details FROM Reservation "
+                + "WHERE Customer_Email=?";
+       return selectReservationsByEmail(email,query);
+    }
+    
+    
+    private LinkedList<ReservationModel> selectReservationsByEmail(String email,String query) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        // if the result set is not empty it returns true
+        LinkedList<ReservationModel> reservationModelList = new LinkedList<>();
+        while(rs.next()){
+           ReservationModel reservation = new ReservationModel();
+           reservation.restaurantName = rs.getString(1);
+           reservation.restaurantEmail = rs.getString(2);
+           reservation.customerEmail = rs.getString(3);
+           Timestamp bkDate = rs.getTimestamp(4);
+           reservation.bookedDate = new Date(bkDate.getTime());
+           reservation.numberOfGuests = rs.getInt(5);
+           reservation.details = rs.getString(6);
+           
+           reservationModelList.add(reservation);
+        }
+        return reservationModelList;
     }
     
     // GETTERS AND SETTERS //
@@ -141,15 +163,15 @@ public class ReservationModel implements Model{
     /**
      * @return the bookedTime
      */
-    public Date getBookedTime() {
-        return bookedTime;
+    public Date getBookedDate() {
+        return bookedDate;
     }
 
     /**
      * @param bookedTime the bookedTime to set
      */
-    public void setBookedTime(Date bookedTime) {
-        this.bookedTime = bookedTime;
+    public void setBookedDate(Date bookedDate) {
+        this.bookedDate = bookedDate;
     }
 
     /**

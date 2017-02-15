@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -60,7 +60,8 @@ public class RestaurantModel implements Model{
     
     @Override
     public void insert() {
-        String query = "INSERT INTO restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Restaurant"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.email);
@@ -143,22 +144,8 @@ public class RestaurantModel implements Model{
      * @param area parameter used to find restaurants having has attribute the area
      * @return the list of restaurants belonging to the selected area
      */    
-    public LinkedList<RestaurantModel> selectByArea(String area) throws SQLException, ClassNotFoundException{
-        String query = "SELECT Restaurant_Email,Name, Address_Line1, PostCode, Contact_Number FROM restaurant WHERE Area = ?";
-        PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, area);
-        ResultSet rs = ps.executeQuery();
-        LinkedList<RestaurantModel> restaurantList = new LinkedList();
-        while(rs.next()){
-            RestaurantModel resModel = new RestaurantModel();
-            resModel.email = rs.getString(1);
-            resModel.name = rs.getString(2);
-            resModel.addressLine1 = rs.getString(3);
-            resModel.postCode = rs.getString(4);
-            resModel.contactNumber = rs.getString(5);
-            restaurantList.add(resModel);
-        }
-        return restaurantList;
+    public LinkedList<RestaurantModel> selectByArea(String area){
+        return null;
     }
     
     // GETTERS AND SETTERS //
