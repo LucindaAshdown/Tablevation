@@ -7,13 +7,14 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.CustomerModel;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,6 +22,7 @@ import model.CustomerModel;
  */
 @WebServlet(name = "UserController", urlPatterns = {"/UserController"})
 public class CustomerController extends HttpServlet {
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,7 +34,7 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -47,15 +49,15 @@ public class CustomerController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if("sign_up".equals(action)){
+        if ("sign_up".equals(action)) {
             String email = request.getParameter("Customer_Email");
             String password = request.getParameter("Customer_Password");
             String forename = request.getParameter("Forename");
             String surname = request.getParameter("Surname");
             String contactNumber = request.getParameter("Contact_Number");
-            
-            if(email != null && password != null && surname != null &&  forename != null && contactNumber != null){
-                try{
+
+            if (email != null && password != null && surname != null && forename != null && contactNumber != null) {
+                try {
                     CustomerModel cusModel = CustomerModel.getInstance();
                     cusModel.setEmail(email);
                     cusModel.setPassword(password);
@@ -66,16 +68,32 @@ public class CustomerController extends HttpServlet {
                     cusModel.insert();
                     RequestDispatcher view = request.getRequestDispatcher("index.jsp");
                     view.forward(request, response);
-                }
-                catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+        } else if ("select_restaurants_by_area".equals(action)) {
+            HttpSession sess = request.getSession();
+            String email = (String) sess.getAttribute("email");
+            String typeOfUser = (String) sess.getAttribute("type_of_user");
+            if (email != null && typeOfUser != null) {
+                String restaurantAreas = request.getParameter("Area");
+                try {
+                    RestaurantModel resModel = RestaurantModel.getInstance();
+                    LinkedList<RestaurantModel> restaurantList = resModel.selectByArea(restaurantAreas);
+                    request.setAttribute("restaurantList", restaurantList);
+                    RequestDispatcher view = request.getRequestDispatcher("");
+                    view.forward(request, response);
+                } catch (Exception e) {
+
+                }
+            }
         }
+
     }
-     
-    public boolean login(String password,String email) throws ClassNotFoundException, SQLException{
+
+    public boolean login(String password, String email) throws ClassNotFoundException, SQLException {
         CustomerModel cusModel = CustomerModel.getInstance();
-        return cusModel.isPresentAccountIntoDb(email,password);
+        return cusModel.isPresentAccountIntoDb(email, password);
     }
 }

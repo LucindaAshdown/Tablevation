@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -64,6 +64,7 @@ public class ReservationModel implements Model{
         PreparedStatement ps;
         String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Time,Booked_Date,No_Guests,Details FROM Reservation "
                 + "               WHERE Customer_Email=?";
+        
         return null;
     }
     

@@ -71,6 +71,13 @@ public class Controller extends HttpServlet {
                e.printStackTrace();
            }
         }
+        else if("logout".equals(action)){
+            HttpSession sess = request.getSession();
+            sess.removeAttribute("email");
+            sess.removeAttribute("type_of_user");
+            RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+            view.forward(request, response);
+        }
     }
 
 }
