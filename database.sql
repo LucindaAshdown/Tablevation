@@ -3,7 +3,7 @@ USE Tablevation;
 
 CREATE TABLE Restaurant(
 Restaurant_Email VARCHAR(50) PRIMARY KEY,
-Retaurant_Password VARCHAR(50) NOT NULL,
+Restaurant_Password VARCHAR(50) NOT NULL,
 Name VARCHAR(50) NOT NULL,
 Address_Line1 VARCHAR(50) NOT NULL,
 Area VARCHAR(15) NOT NULL,
@@ -36,8 +36,7 @@ ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 Restaurant_Name VARCHAR(50) NOT NULL,
 Restaurant_Email VARCHAR(50) NOT NULL,
 Customer_Email VARCHAR(50) NOT NULL,
-Booked_Time TIME NOT NULL,
-Booked_Date DATE NOT NULL,
+Booked_Date TIMESTAMP NOT NULL,
 No_Guests INT NOT NULL,
 Details VARCHAR(100) NULL,
 CONSTRAINT FOREIGN KEY (Customer_Email) REFERENCES Customer(Customer_Email),
@@ -62,7 +61,7 @@ insert into Restaurant values ('lrose2@examiner.com', 'JXcwpZhhJFcs', 'Hettinger
 insert into Restaurant  values ('acarroll3@senate.gov', '3EEqQkJQ', 'Denesik-Rohan', '4 Jessie road', 'Southsea', 'Portsmouth', 'Hampshire', 'PO9H43', 1, 0, '02301 234580', '9:00', '22:00', '10:00', '22:00', '10:00', '20:00', 'Thai', 35);
 
 Making a Reservation- (Book Table)
-INSERT INTO Reservation VALUES (?,?,?,?,?,?,?); ALL EXCEPT ID
+INSERT INTO Reservation VALUES (?,?,?,?,?,?); ALL EXCEPT ID
 INSERT INTO Reservation VALUES(0,`SpicyFlame`,`SpicyFlame.co.uk`,`jeanaldread@gmail.com`,`16:00`,`23-09-2017`,20,`a birthday reservation for Jean Aldread on the 23rd of September and a maximum of 20 seats`)
 
 
