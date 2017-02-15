@@ -66,7 +66,18 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="CustomerMenu.html">Menu</a></li>
-                            <li class="active"><a href="CustomerSearchRestaurants.html">Search Restaurants<span class="sr-only">(current)</span></a></li>
+                            <!-- Drop dropdown code -->
+                            <li class="dropdown active">
+                                  <a href="CustomerSearchRestaurants.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search Restaurants<span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="CustomerSearchRestaurants.html">Gunwharf</a></li>
+                                    <li><a href="CustomerSearchRestaurants.html">Fratton</a></li>
+                                    <li><a href="CustomerSearchRestaurants.html">Southsea</a></li>
+                                    <li><a href="CustomerSearchRestaurants.html">Old Portsmouth</a></li>
+                                    <li><a href="CustomerSearchRestaurants.html">Eastney</a></li>
+                                    <li><a href="CustomerSearchRestaurants.html">Cosham</a></li>
+                                  </ul>
+                                </li>
                             <li><a href="CustomerMakeBooking.html">Make Booking</a></li>
                             <li><a href="CustomerViewReservations.html">View Bookings</a></li>
                             <li><a href="CustomerAmendReservation.html">Amend Bookings</a></li>
@@ -98,6 +109,11 @@
     <footer>
 
     </footer>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
