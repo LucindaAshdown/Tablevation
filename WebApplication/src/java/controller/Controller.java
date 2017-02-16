@@ -45,10 +45,11 @@ public class Controller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
+        String typeOfUser;
         if("login".equals(action)){
            String email = request.getParameter("email");
            String password = request.getParameter("password");
-           String typeOfUser = request.getParameter("type_of_user");
+           typeOfUser = request.getParameter("type_of_user");
            try{
                boolean loggedIn;
                if(typeOfUser.equals("customer")){
@@ -63,7 +64,15 @@ public class Controller extends HttpServlet {
                    HttpSession session = request.getSession();
                    session.setAttribute("email", email);
                    session.setAttribute("type_of_user", typeOfUser);
-                   RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                   RequestDispatcher view;
+                   
+                   if(typeOfUser.equals("customer")){
+                       view = request.getRequestDispatcher("index.jsp");
+                       
+                   }
+                   else{
+                       view = request.getRequestDispatcher("index.jsp");
+                   }
                    view.forward(request, response);
                }
            }

@@ -7,12 +7,15 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.ReservationModel;
 import model.RestaurantModel;
 
 /**
@@ -78,6 +81,22 @@ public class RestaurantController extends HttpServlet {
                 }
                 catch(Exception e){
                     e.printStackTrace();
+                }
+            }
+        }
+        else if("select_reservations".equals("action")){
+            HttpSession sess = request.getSession();
+            String email = (String) sess.getAttribute("email");
+            String typeOfUser = (String) sess.getAttribute("type_of_user");
+            if (email != null && typeOfUser != null) {
+                try {
+                    ReservationModel resModel = ReservationModel.getInstance();
+                    LinkedList<ReservationModel> reservationList = resModel.selectAllReservationByRestaurantEmail(email);
+                    request.setAttribute("reservationList", reservationList);
+                    RequestDispatcher view = request.getRequestDispatcher("RestaurantViewReservations.jsp");
+                    view.forward(request, response);
+                } catch (Exception e) {
+                    
                 }
             }
         }

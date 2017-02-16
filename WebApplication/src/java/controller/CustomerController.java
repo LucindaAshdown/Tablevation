@@ -16,13 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.CustomerModel;
+import model.ReservationModel;
 import model.RestaurantModel;
 
 /**
  *
  * @author benha
  */
-@WebServlet(name = "UserController", urlPatterns = {"/UserController"})
+@WebServlet(name = "CustomerController", urlPatterns = {"/CustomerController"})
 public class CustomerController extends HttpServlet {
 
     /**
@@ -74,7 +75,8 @@ public class CustomerController extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        } else if ("select_restaurants_by_area".equals(action)) {
+        } 
+        else if ("select_restaurants_by_area".equals(action)) {
             HttpSession sess = request.getSession();
             String email = (String) sess.getAttribute("email");
             String typeOfUser = (String) sess.getAttribute("type_of_user");
@@ -91,6 +93,23 @@ public class CustomerController extends HttpServlet {
                 }
             }
         }
+        else if("select_reservations".equals("action")){
+            HttpSession sess = request.getSession();
+            String email = (String) sess.getAttribute("email");
+            String typeOfUser = (String) sess.getAttribute("type_of_user");
+            if (email != null && typeOfUser != null) {
+                try {
+                    ReservationModel resModel = ReservationModel.getInstance();
+                    LinkedList<ReservationModel> reservationList = resModel.selectAllReservationByCustomerEmail(email);
+                    request.setAttribute("reservationList", reservationList);
+                    RequestDispatcher view = request.getRequestDispatcher("CustomerViewReservations.jsp");
+                    view.forward(request, response);
+                } catch (Exception e) {
+                    
+                }
+            }
+        }
+        
 
     }
 

@@ -127,30 +127,9 @@
         <div class="form" id="login-form">
             <h2>Login to your account</h2>
             <form name="login" autocomplete="on">
-                <!-- <div>
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder=" " />
-                    <div class="requirements">
-                        Must be a valid email address.
-                    </div>
-                </div>
-
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required="" placeholder=" " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
-
-                    <div class="requirements">
-                        Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.
-                    </div>
-                </div> -->
-
-                <!-- <input type="text" placeholder="Username" name="username" />
-                <input type="password" placeholder="Password" name="password"/>
-                 -->
-
                 <div>
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="username" placeholder=" " />
+                    <input type="email" id="email" name="email" placeholder=" " />
                 </div>
 
                 <div>
@@ -160,14 +139,15 @@
                 </div>
 
                 <label class="control control--radio">Owner
-  		              <input type="radio" name="login-type" value="owner" required/>
+  		              <input type="radio" name="login-type" value="restaurant" required/>
   		                <div class="control__indicator"></div>
   	            </label>
                 <label class="control control--radio">Customer
                   <input type="radio" name="login-type" value="customer" required=""/>
                   <div class="control__indicator"></div>
                 </label>
-                <button class="button" type="submit" formaction="index.html">Login</button>
+                 <input type="hidden" name="action" value="login">
+                <button class="button" type="submit" formaction="Controller">Login</button>
             </form>
 
         </div>

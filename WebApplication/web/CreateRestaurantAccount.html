@@ -125,48 +125,6 @@
         <div class="form">
             <h2>Create your restaurant account</h2>
             <form>
-                <!-- <input type="text" placeholder="Email" name="Restaurant_Email" required=""/>
-                <input type="password" placeholder="Password" name="Retaurant_Password" required=""/>
-                <input type="text" placeholder="Restaurant Name" required="" name="Name"/>
-                <input type="text" placeholder="Address Line 1" required="" name="Address_Line1" />
-                <input type="text" placeholder="Address Line 2 (Optional)" name="Address_Line1" />
-                <input type="text" placeholder="Address Line 3 (Optional)" name="Address_Line1" />
-
-                <select class="selectpicker" required="" data-live-search="true" title="Please select an Area" data-width="100%">
-                  <option>Gunwharf </option>
-                  <option>Southsea </option>
-                  <option>Fratton</option>
-                  <option>Old Portsmouth</option>
-                  <option>Eastney</option>
-                  <option>Cosham</option>
-                </select>
-
-                <input type="text" placeholder="Post Code" required="" name="PostCode" pattern="[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}" />
-
-                <select class="selectpicker" title="Please select your Restaurant Rating"  data-width="100%">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-                <input type="text" required="" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder="Phone number">
-
-                <select class="selectpicker" required="" data-live-search="true" title="Please select the type of food"  data-width="100%">
-                  <option>British</option>
-                  <option>Chinese</option>
-                  <option>Indian</option>
-                  <option>Italian</option>
-                  <option>Greek</option>
-                  <option>Mexican</option>
-                  <option>Thai</option>
-                  <option>Spanish</option>
-                </select>
-
-                <input type="number" min="1" max="40" name="Total_No_Seats" value="" placeholder="Total number of seats" required="">
-
- -->
-
                 <div>
                     <label for="Restaurant_Email">Email Address</label>
                     <input type="email" id="Restaurant_Email" placeholder=" " name="Restaurant_Email" required=""/>
@@ -224,16 +182,6 @@
                 </div>
 
                 <div>
-                    <label for="Rating">Please select your Restaurant Rating (Optional)</label>
-                    <select class="selectpicker" name="Rating" title="Please select your Restaurant Rating"  data-width="100%">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                </div>
-                <div>
                     <label for="Contact_Number">Phone number</label>
                   <input type="text" required="" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder=" ">
 
@@ -266,13 +214,9 @@
                         Restaurants seat currently must be between 1-40.
                     </div>
                 </div>
-
-
-
-
-                <button class="button" formaction="login.html">Register</button>
+                <input type="hidden" name="action" value="sign_up">
+                <button class="button" formaction="RestaurantController">Register</button>
             </form>
-
         </div>
         <!-- <div class="form">
             <h2>Choose your account type to create</h2>
