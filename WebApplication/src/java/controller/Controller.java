@@ -67,7 +67,7 @@ public class Controller extends HttpServlet {
                    session.setAttribute("type_of_user", typeOfUser);
                    
                    if(typeOfUser.equals("customer")){
-                       response.sendRedirect("CustomerMenu.html");
+                       response.sendRedirect("CustomerMenu.jsp");
                    }
                    else{
                        response.sendRedirect("RestaurantMenu.html");   

@@ -79,7 +79,7 @@ public class ReservationModel implements Model{
      * @throws java.sql.SQLException
      */
     public LinkedList<ReservationModel> selectAllReservationByCustomerEmail(String email) throws SQLException{
-        String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Time,Booked_Date,No_Guests,Details FROM Reservation "
+        String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Date,No_Guests,Details FROM Reservation "
                 + "WHERE Customer_Email=?";
         return selectReservationsByEmail(email,query);
     }
@@ -92,7 +92,7 @@ public class ReservationModel implements Model{
      */
     public LinkedList<ReservationModel> selectAllReservationByRestaurantEmail(String email) throws SQLException{
         String query = "SELECT Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Date,No_Guests,Details FROM Reservation "
-                + "WHERE Customer_Email=?";
+                + "WHERE Restaurant_Email=?";
        return selectReservationsByEmail(email,query);
     }
     

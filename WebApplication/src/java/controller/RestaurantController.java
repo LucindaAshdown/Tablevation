@@ -35,6 +35,7 @@ public class RestaurantController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        doPost(request,response);
     }
     
     /**
@@ -54,7 +55,7 @@ public class RestaurantController extends HttpServlet {
             String password = request.getParameter("Restaurant_Password");
             String restaurantName = request.getParameter("Name");
             String addressLine1 = request.getParameter("Address_Line1");
-            String area = request.getParameter("Area");
+            String area = request.getParameter("Area").toLowerCase();
             String postCode = request.getParameter("PostCode");
             String contactNumber = request.getParameter("Contact_Number");
             String foodType = request.getParameter("Food_Type");
@@ -84,7 +85,7 @@ public class RestaurantController extends HttpServlet {
                 }
             }
         }
-        else if("select_reservations".equals("action")){
+        else if("view_reservations".equals(action)){
             HttpSession sess = request.getSession();
             String email = (String) sess.getAttribute("email");
             String typeOfUser = (String) sess.getAttribute("type_of_user");
@@ -96,7 +97,7 @@ public class RestaurantController extends HttpServlet {
                     RequestDispatcher view = request.getRequestDispatcher("RestaurantViewReservations.jsp");
                     view.forward(request, response);
                 } catch (Exception e) {
-                    
+                    e.printStackTrace();
                 }
             }
         }
