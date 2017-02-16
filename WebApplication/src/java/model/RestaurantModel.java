@@ -60,8 +60,7 @@ public class RestaurantModel implements Model{
     
     @Override
     public void insert() {
-        String query = "INSERT INTO Restaurant"
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.email);
@@ -69,8 +68,8 @@ public class RestaurantModel implements Model{
             ps.setString(3, this.name); /*name */
             ps.setString(4, this.addressLine1); /*Address line 1 */
             ps.setString(5, this.area); /*Area */
-            ps.setString(6, this.city); /*City */
-            ps.setString(7, this.county); /*County */
+            ps.setString(6, "Portsmouth"); /*City */
+            ps.setString(7, "Hampshire"); /*County */
             ps.setString(8, this.postCode); /*PostCode */
             ps.setInt(9, -1); /*Rating */
             ps.setInt(10, 0);
@@ -88,7 +87,7 @@ public class RestaurantModel implements Model{
             ps.executeUpdate();
             
         } catch (SQLException ex) {
-            
+            ex.printStackTrace();
         }
         
     }

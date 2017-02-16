@@ -100,7 +100,6 @@
                                 </li>
                                 <li><a href="CustomerMakeBooking.html">Make Booking</a></li>
                                 <li><a href="CustomerViewReservations.html">View Bookings</a></li>
-                                <li><a href="CustomerAmendReservation.html">Amend Bookings</a></li>
                                 <li><a href="EditCustomerAccount.html">Edit Account</a></li>
                                 <li><a href="index.html">Log out</a></li>
                                     <%

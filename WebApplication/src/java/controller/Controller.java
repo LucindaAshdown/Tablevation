@@ -64,16 +64,13 @@ public class Controller extends HttpServlet {
                    HttpSession session = request.getSession();
                    session.setAttribute("email", email);
                    session.setAttribute("type_of_user", typeOfUser);
-                   RequestDispatcher view;
                    
                    if(typeOfUser.equals("customer")){
-                       view = request.getRequestDispatcher("index.jsp");
-                       
+                       response.sendRedirect("CustomerMenu.html");
                    }
                    else{
-                       view = request.getRequestDispatcher("index.jsp");
+                       response.sendRedirect("RestaurantMenu.html");   
                    }
-                   view.forward(request, response);
                }
            }
            catch(Exception e){
