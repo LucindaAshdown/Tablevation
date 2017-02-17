@@ -350,6 +350,7 @@ div.col-sm-4 {
     -webkit-box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
     box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
+    
 }
 div.col-sm-4:hover{
   background-color: rgba(0, 0, 0, 0.1);
