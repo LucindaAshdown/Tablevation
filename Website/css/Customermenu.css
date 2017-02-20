@@ -327,12 +327,12 @@ form>button {
 
 /* css for the columns for menu items */
 
-div>.col-sm-4>p>img {
+div>.col-lg-4>p>img {
     padding-left: 17%;
     height: 150px;
 }
 
-div>.col-sm-4>label {
+div>.col-lg-4>label {
     padding: 10% 0 2% 10%;
     font-size: 18px;
 }
@@ -342,7 +342,7 @@ div>.col-sm-4>label {
     height: 160px;
 }
 
-div.col-sm-4 {
+div.col-lg-4 {
     position: relative;
     width: 32%;
     margin-right: 1%;
@@ -350,14 +350,23 @@ div.col-sm-4 {
     -webkit-box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
     box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
-    
 }
-div.col-sm-4:hover{
-  background-color: rgba(0, 0, 0, 0.1);
+
+div.col-lg-4:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
-div.col-sm-4 > a {
-  margin-left: 40%;
-  margin-bottom: 5%;
+
+div.col-lg-4>a {
+    margin-left: 40%;
+    margin-bottom: 5%;
+}
+
+
+/*this fixes the overflow in mobile*/
+
+div.row {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 
@@ -395,52 +404,51 @@ div.col-sm-4 > a {
 /* Large Devices, Wide Screens */
 
 @media only screen and (max-width: 1200px) {
-  div>.col-sm-4 {
-      max-width: 320px;
-      width: 100%;
-  }
+    div>.col-lg-4 {
+        max-width: 320px;
+        width: 100%;
+    }
 }
 
 
 /* Medium Devices, Desktops */
 
 @media only screen and (max-width: 992px) {
-  div>.col-sm-4 {
-      max-width: 390px;
-      width: 100%;
-  }
+    div>.col-lg-4 {
+        max-width: 390px;
+        width: 100%;
+    }
 }
 
 
 /* Small Devices, Tablets */
 
 @media only screen and (max-width: 768px) {
-  div>.col-sm-4 {
-      max-width: 380px;
-      width: 100%;
-  }
+    div>.col-lg-4 {
+        max-width: 380px;
+        width: 100%;
+        margin-left: 10%;
+    }
 }
-
 
 
 /* Extra Small Devices, Phones */
 
 @media only screen and (max-width: 480px) {
-  div>.col-sm-4 {
-      max-width: 350px;
-      width: 100%;
-
-
-  }
+    div>.col-lg-4 {
+        max-width: 350px;
+        width: 100%;
+        margin-left: 1%;
+    }
 }
 
 
 /* Custom, iPhone Retina */
 
 @media only screen and (max-width: 320px) {
-    div>.col-sm-4 {
+    div>.col-lg-4 {
         max-width: 320px;
         width: 100%;
-
+        margin-left: 5%;
     }
 }
