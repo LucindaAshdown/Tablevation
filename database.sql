@@ -102,5 +102,8 @@ WHERE Customer_Email=? AND Customer_Password=?;
 Rate Restaurant-
 INSERT INTO Restaurant VALUES (?); Rating 
 
+UPDATE Restaruant SET (?) WHERE Restaurant_Email=Restaurant_Email; Updating the rating
+SELECT Name,Contact_Number,Rating,MondayToFriday_OT, MondayToFriday_CT, Sat_OT, Sat_CT,Sun_OT,Sun_CT,Food_Type FROM Restaurant 
+WHERE Rating=5; sorting the restaurants by certain ratings
 
 */
