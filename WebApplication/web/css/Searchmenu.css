@@ -343,12 +343,14 @@ div>.col-sm-4>label {
 
 div.col-sm-4 {
     position: relative;
-    width: 32%;
     margin-right: 1%;
-    margin-bottom: 10px;
-    -webkit-box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
-    box-shadow: -19px 0px 47px -7px rgba(0, 0, 0, 0.25);
+    max-width: 320px;
+    width: 100%;
+    height: 16em;
+    margin-left: 2em;
+    margin-bottom: 2em;
+    border: 1px solid lightgrey;
+    box-shadow: 1px 3px 6px lightgrey;
 }
 div.col-sm-4:hover{
   background-color: rgba(0, 0, 0, 0.1);
@@ -396,6 +398,11 @@ div.col-sm-4 > a {
   div>.col-sm-4 {
       max-width: 320px;
       width: 100%;
+      height: 16em;
+        margin-left: 2em;
+        margin-bottom: 2em;
+        border: 1px solid lightgrey;
+        box-shadow: 1px 3px 6px lightgrey;
   }
 }
 
@@ -406,6 +413,11 @@ div.col-sm-4 > a {
   div>.col-sm-4 {
       max-width: 390px;
       width: 100%;
+      height: 16em;
+        margin-left: 2em;
+        margin-bottom: 2em;
+        border: 1px solid lightgrey;
+        box-shadow: 1px 3px 6px lightgrey;
   }
 }
 
@@ -413,10 +425,15 @@ div.col-sm-4 > a {
 /* Small Devices, Tablets */
 
 @media only screen and (max-width: 768px) {
-  div>.col-sm-4 {
-      max-width: 380px;
-      width: 100%;
-  }
+    div>.col-sm-4 {
+        max-width: 380px;
+        width: 100%;
+        height: 16em;
+        margin-left: 2em;
+        margin-bottom: 2em;
+        border: 1px solid lightgrey;
+        box-shadow: 1px 3px 6px lightgrey;
+    }
 }
 
 

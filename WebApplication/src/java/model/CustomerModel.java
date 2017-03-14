@@ -59,13 +59,14 @@ public class CustomerModel implements Model{
 
     @Override
     public void update() {
-        String query = "UPDATE Customer SET (?,?,?) WHERE Customer.email = ?";
+        String query = "UPDATE Customer SET Forename=?,Surname=?,Contact_Number=? WHERE Customer_Email = ?";
         try{
             PreparedStatement ps = getConn().prepareStatement(query);
-            ps.setString(1, this.getPassword());
-            ps.setString(2, this.getForename());
-            ps.setString(3, this.getSurname());
-            ps.setString(4, this.getEmail());
+            ps.setString(1, this.getForename());
+            ps.setString(2, this.getSurname());
+            ps.setString(3, this.getContactNumber());
+            
+            ps.setString(4, this.email);
             
             ps.executeUpdate();
         }catch(SQLException ex){

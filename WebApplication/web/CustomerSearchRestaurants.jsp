@@ -1,4 +1,10 @@
 <%-- 
+    Document   : CustomerSearchRestaurants.jsp
+    Created on : Mar 14, 2017, 12:06:20 AM
+    Author     : Nota
+--%>
+
+<%-- 
     Document   : CustomerMenu
     Created on : Feb 16, 2017, 5:48:43 PM
     Author     : Nota
@@ -25,13 +31,6 @@
         <!-- Custom CSS -->
         <link href="css/full-width-pics.css" rel="stylesheet">
             
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
             
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -106,18 +105,64 @@
                     </div>
                     <!-- /.container-fluid -->
                 </nav>
+            </div>
+        </div>
+            
+        <div class="container">
+            <div class="row">
+                <div class="row">
                     
+                        <%
+                            LinkedList<RestaurantModel> restaurantsByArea = (LinkedList<RestaurantModel>) request.getAttribute("restaurantList");
+                            if(restaurantsByArea != null){
+                              int length = restaurantsByArea.size();
+                              for(int i = 0; i< length; i++){
+                                RestaurantModel restaurant = restaurantsByArea.get(i);
+                                String name = restaurant.getName();
+                                String foodType = restaurant.getFoodType();
+                                String addressLine1 = restaurant.getAddressLine1();
+                                String contactNumber = restaurant.getContactNumber();
+                                String restaurantEmail = restaurant.getEmail();
+                                String postCode = restaurant.getPostCode();
+                        %>    
+                        <div class="col-sm-4">
+                        <!-- here starts the box that hold restaurant name and description -->
+                        <label><%=name%></label>
+                            
+                        <p class="menu_description">
+                            Food type:<%=foodType%><br>
+                            Address:<%=addressLine1%><br>
+                            Contact number:<%=contactNumber%><br>
+                            Contact number:<%=postCode%><br>
+                        </p>
+                        <a class="btn btn-success"
+                           href="CustomerController?action=reservation_page&Restaurant_Email=<%=restaurantEmail%>&Restaurant_Name=<%=name%>"
+                           role="button">
+                            Book a table
+                        </a>
+                    </div>
+                        <%
+                               }
+                            }
+                            else{
+                        %>
+                            <div class="col-sm-4">
+                                <!-- here starts the box that hold restaurant name and description -->
+                                <label><%="No data"%></label>
+                            </div>
+                        <%    
+                        }
+                        %>
+                    <!-- here ends the box that hold restaurant name and description -->
+                </div>
                     
                     
             </div>
         </div>
             
-        <!-- Full Width Image Header with Logo -->
-        <!-- Image backgrounds are set within the full-width-pics.css file. -->
-        <header class="image-bg-fluid-height">
-            <img class="img-responsive img-center" src="img/logo.jpg" alt="Logo">
-        </header>
-        
+        <!-- Content Section -->
+            
+            
         <!-- Footer -->
         <footer>
             <div class="container">

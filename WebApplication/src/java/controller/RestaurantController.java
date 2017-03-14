@@ -7,6 +7,9 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -95,6 +98,64 @@ public class RestaurantController extends HttpServlet {
                     LinkedList<ReservationModel> reservationList = resModel.selectAllReservationByRestaurantEmail(email);
                     request.setAttribute("reservationList", reservationList);
                     RequestDispatcher view = request.getRequestDispatcher("RestaurantViewReservations.jsp");
+                    view.forward(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else if("update".equals(action)){
+            HttpSession sess = request.getSession();
+            String email = (String) sess.getAttribute("email");
+            
+            DateFormat formatter = new SimpleDateFormat("HH:mm");
+            
+            String contactNumber = request.getParameter("Contact_Number");
+            String monToFryOt = request.getParameter("MondayToFriday_OT");
+            String monToFryCt = request.getParameter("MondayToFriday_CT");
+            String satOt = request.getParameter("Sat_OT");
+            String satCt = request.getParameter("Sat_CT");
+            String sunOt = request.getParameter("Sun_OT");
+            String sunCt = request.getParameter("Sun_CT");
+            int totalNumberOfSeats = Integer.parseInt(request.getParameter("Total_No_Seats"));
+            if (email != null) {
+                try {
+                    Date MonToFryOpeningTime = formatter.parse(monToFryOt);
+                    Date MonToFryclosingTime = formatter.parse(monToFryCt);
+                    Date satOpeningTime = formatter.parse(satOt);
+                    Date satclosingTime = formatter.parse(satCt);
+                    Date sunOpeningTime = formatter.parse(sunOt);
+                    Date sunClosingTime = formatter.parse(sunCt);
+                    
+                    RestaurantModel resModel = RestaurantModel.getInstance();
+                    resModel.setMonFriOpTime(MonToFryOpeningTime);
+                    resModel.setMonFriClTime(MonToFryclosingTime);
+                    resModel.setSatOpTime(satOpeningTime);
+                    resModel.setSatClTime(satclosingTime);
+                    resModel.setSunOpTime(sunOpeningTime);
+                    resModel.setSunClTime(sunClosingTime);
+                    resModel.setTotalNumberOfSeats(totalNumberOfSeats);
+                    resModel.setContactNumber(contactNumber);
+                    resModel.setEmail(email);
+                    resModel.update();
+                    RequestDispatcher view = request.getRequestDispatcher("RestaurantMenu.html");
+                    view.forward(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else if("update_number_of_seats".equals(action)){
+            HttpSession sess = request.getSession();
+            String email = (String) sess.getAttribute("email");
+            int bookedSeats = Integer.parseInt(request.getParameter("Booked_seats"));
+            if (email != null) {
+                try {
+                    RestaurantModel resModel = RestaurantModel.getInstance();
+                    resModel.setBookedSeats(bookedSeats);
+                    resModel.setEmail(email);
+                    resModel.updateNumberOfSeats();
+                    RequestDispatcher view = request.getRequestDispatcher("RestaurantMenu.html");
                     view.forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();

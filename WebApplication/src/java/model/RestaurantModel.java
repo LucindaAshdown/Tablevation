@@ -94,39 +94,48 @@ public class RestaurantModel implements Model{
 
     @Override
     public void update() {
-        String query = "UPDATE Restaruant SET (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE Restaurant.email = ?";
+        String query = "UPDATE Restaurant SET "
+                + "Contact_Number = ?,"
+                + "Total_No_Seats = ?,"
+                + "MondayToFriday_OT = ?,"
+                + "MondayToFriday_CT = ?,"
+                + "Sat_OT = ?,"
+                + "Sat_CT = ?,"
+                + "Sun_OT = ?,"
+                + "Sun_CT = ? "
+                + "WHERE Restaurant_Email = ?";
             try {
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, this.email);
-                ps.setString(2, this.password);
-                ps.setString(3, this.name); /*name */
-                ps.setString(4, this.addressLine1); /*Address line 1 */
-                ps.setString(5, this.area); /*Area */
-                ps.setString(6, this.city); /*City */
-                ps.setString(7, this.county); /*County */
-                ps.setString(8, this.postCode); /*PostCode */
-                ps.setInt(9, this.rating); /*Rating */
-                ps.setString(10, this.contactNumber); /*Contact Number */
-                Date currentDate = new Date();
-                Time currentTime = new Time(currentDate.getTime());
-                ps.setTime(11, new Time(this.monFriOpTime.getTime())); /* Monday to Friday Opening */
-                ps.setTime(12, new Time(this.monFriClTime.getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
-                ps.setTime(13, new Time(this.satOpTime.getTime()));
-                ps.setTime(14, new Time(this.satClTime.getTime())); /* Saturday Closing Time */
-                ps.setTime(15, new Time(this.sunOpTime.getTime())); /* Sunday Opening Time */
-                ps.setTime(16, new Time(this.sunClTime.getTime())); /* Sunday Closing Time */
-                ps.setString(17, this.foodType);
-                ps.setInt(18, this.totalNumberOfSeats);
+                ps.setString(1, this.contactNumber); /*Contact Number */
+                ps.setInt(2, this.totalNumberOfSeats);
+                ps.setTime(3, new Time(this.getMonFriOpTime().getTime())); /* Monday to Friday Opening */
+                ps.setTime(4, new Time(this.getMonFriClTime().getTime())); /* Monday to Friday Closing */ /* Monday to Friday Opening */
+                ps.setTime(5, new Time(this.satOpTime.getTime()));
+                ps.setTime(6, new Time(this.satClTime.getTime())); /* Saturday Closing Time */
+                ps.setTime(7, new Time(this.sunOpTime.getTime())); /* Sunday Opening Time */
+                ps.setTime(8, new Time(this.sunClTime.getTime())); /* Sunday Closing Time */
                 
-                ps.setString(19, this.email); /* where statement email */
+                ps.setString(9, this.email); /* where statement email */
                 
                 ps.executeUpdate();
-                conn.commit();
-            
         } catch (SQLException ex) {
-            
+            ex.printStackTrace();
         }
         
+    }
+    
+    public void updateNumberOfSeats(){
+        String query = "UPDATE Restaurant SET Booked_Seats = ? WHERE Restaurant_Email = ?";
+            try {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setInt(1, this.bookedSeats);
+                ps.setString(2, this.email); /* where statement email */
+                
+                ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
     
     public boolean isPresentAccountIntoDb(String email,String password) throws SQLException{
@@ -401,5 +410,35 @@ public class RestaurantModel implements Model{
     public void setSunClTime(Date sunClTime) {
         this.sunClTime = sunClTime;
     }
+
+    /**
+     * @return the monFriOpTime
+     */
+    public Date getMonFriOpTime() {
+        return monFriOpTime;
+    }
+
+    /**
+     * @param monFriOpTime the monFriOpTime to set
+     */
+    public void setMonFriOpTime(Date monFriOpTime) {
+        this.monFriOpTime = monFriOpTime;
+    }
+
+    /**
+     * @return the monFriClTime
+     */
+    public Date getMonFriClTime() {
+        return monFriClTime;
+    }
+
+    /**
+     * @param monFriClTime the monFriClTime to set
+     */
+    public void setMonFriClTime(Date monFriClTime) {
+        this.monFriClTime = monFriClTime;
+    }
+    
+
 
 }

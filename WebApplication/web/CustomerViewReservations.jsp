@@ -83,26 +83,49 @@
                             <img alt="Tablevation logo" src="img/logo.jpg" width="90" height="30">
                         </a>
 
-                        <a class="navbar-brand" href="index.html">Tablevation</a>
+                        <a class="navbar-brand" href="index.jsp">Tablevation</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="CustomerMenu.html">Menu</a></li>
+                            <li><a href="CustomerMenu.jsp">Menu</a></li>
                             <!-- Drop dropdown code -->
                             <li>
-                                <a href="CustomerSearchRestaurants.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search Restaurants<span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search Restaurants<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="CustomerSearchRestaurants.html">Gunwharf</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Fratton</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Southsea</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Old Portsmouth</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Eastney</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Cosham</a></li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=gunwharf">
+                                            Gunwharf
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=fratton">
+                                            Fratton
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=southsea">
+                                            Southsea
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=old_portsmouth">
+                                            Old portsmouth
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=eastney">
+                                            Eastney
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=cosham">
+                                            Cosham
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li><a href="CustomerMakeBooking.html">Make Booking</a></li>
                             <li class="dropdown active">
                                 <a href="CustomerController?action=select_reservations">
                                     View Bookings
@@ -123,12 +146,6 @@
 
         </div>
     </div>
-
-    <!-- Full Width Image Header with Logo -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-    <header class="image-bg-fluid-height">
-        <img class="img-responsive img-center" src="img/logo.jpg" alt="Logo">
-    </header>
 
     <!-- Content Section -->
     <section>

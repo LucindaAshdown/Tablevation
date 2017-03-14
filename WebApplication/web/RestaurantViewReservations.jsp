@@ -116,12 +116,6 @@
           </div>
         </div>
 
-    <!-- Full Width Image Header with Logo -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-    <header class="image-bg-fluid-height">
-        <img class="img-responsive img-center" src="img/logo.jpg" alt="Logo">
-    </header>
-
     <!-- Content Section -->
     <section>
       <div class="container">
@@ -152,7 +146,13 @@
                       <label>booking date and time:<%=bookedDateString%></label>
                       <p>customer email:<%=customerEmail%></p>
                       <p>number of guests:<%=numberOfGuests%></p>
+                      <%
+                          if(details != null){ 
+                      %>
                       <p>additional details:<%=details%></p>
+                      <%
+                       }
+                      %>
                   </div>
                       <%
                         }

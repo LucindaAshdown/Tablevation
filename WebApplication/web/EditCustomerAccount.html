@@ -60,29 +60,52 @@
                             <img alt="Tablevation logo" src="img/logo.jpg" width="90" height="30">
                         </a>
 
-                        <a class="navbar-brand" href="index.html">Tablevation</a>
+                        <a class="navbar-brand" href="index.jsp">Tablevation</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="CustomerMenu.html">Menu</a></li>
+                            <li><a href="CustomerMenu.jsp">Menu</a></li>
                             <!-- Drop dropdown code -->
                             <li class="dropdown">
                                   <a href="CustomerSearchRestaurants.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search Restaurants<span class="caret"></span></a>
                                   <ul class="dropdown-menu">
-                                    <li><a href="CustomerSearchRestaurants.html">Gunwharf</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Fratton</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Southsea</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Old Portsmouth</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Eastney</a></li>
-                                    <li><a href="CustomerSearchRestaurants.html">Cosham</a></li>
-                                  </ul>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=gunwharf">
+                                            Gunwharf
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=fratton">
+                                            Fratton
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=southsea">
+                                            Southsea
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=old_portsmouth">
+                                            Old portsmouth
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=eastney">
+                                            Eastney
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="CustomerController?action=select_restaurants_by_area&Area=cosham">
+                                            Cosham
+                                        </a>
+                                    </li>
+                                </ul>
                                 </li>
-                            <li><a href="CustomerMakeBooking.html">Make Booking</a></li>
                             <li><a href="CustomerController?action=select_reservations">View Bookings</a></li>
                             <li class="active"><a href="EditCustomerAccount.html">Edit Account<span class="sr-only">(current)</span></a></li>
-                            <li><a href="index.html">Log out</a></li>
+                            <li><a href="index.jsp">Log out</a></li>
                           </ul>
                           <!-- This is the code for links on the right side of the nav bar -->
                           <!-- <ul class="nav navbar-nav navbar-right">
@@ -116,18 +139,10 @@
                                 </div>
                                 <div class="form">
                                     <h2>Enter the Details you would like to change</h2>
-                                    <form autocomplete="on">
-
-                                        <div>
-                                            <label for="Customer_Email">Email Address</label>
-                                            <input type="email" id="Customer_Email" name="Customer_Email"/>
-                                            <!-- <div class="requirements">
-                                                Must be a valid email address.
-                                            </div> -->
-                                        </div>
+                                    <form autocomplete="on" method="post">
                                         <div>
                                             <label for="Forename">Forename</label>
-                                            <input type="text" id="Forename" name="Forname" placeholder=" " />
+                                            <input type="text" id="Forename" name="Forename" placeholder=" " />
                                             <!-- <div class="requirements">
                                                 Please enter your forename.
                                             </div> -->
@@ -144,7 +159,8 @@
                                             <input type="text" pattern="^\s*\(?(020[7,8]{1}\)?[ ]?[1-9]{1}[0-9{2}[ ]?[0-9]{4})|(0[1-8]{1}[0-9]{3}\)?[ ]?[1-9]{1}[0-9]{2}[ ]?[0-9]{3})\s*$" name="Contact_Number" placeholder=" ">
 
                                         </div>
-                                        <button class="button" formaction="CustomerMenu.html">Save</button>
+                                        <input type="hidden" name="action" value="update">
+                                        <button class="button" formaction="CustomerController">Save</button>
                                     </form>
 
                                 </div>

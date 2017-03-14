@@ -89,7 +89,7 @@ public class CustomerController extends HttpServlet {
                     RestaurantModel resModel = RestaurantModel.getInstance();
                     LinkedList<RestaurantModel> restaurantList = resModel.selectByArea(restaurantArea);
                     request.setAttribute("restaurantList", restaurantList);
-                    RequestDispatcher view = request.getRequestDispatcher("CustomerMenu.jsp");
+                    RequestDispatcher view = request.getRequestDispatcher("CustomerSearchRestaurants.jsp");
                     view.forward(request, response);
                 } catch (Exception e) {
                     
@@ -149,6 +149,31 @@ public class CustomerController extends HttpServlet {
                     view.forward(request, response);
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                }
+            }
+        }
+        else if("update".equals(action)){
+            HttpSession sess = request.getSession();
+            String email = (String) sess.getAttribute("email");
+            if (email != null) {
+                String forename = request.getParameter("Forename");
+                String surname = request.getParameter("Surname");
+                String contactNumber = request.getParameter("Contact_Number");
+                
+                if (surname != null && forename != null && contactNumber != null) {
+                    try {
+                        CustomerModel cusModel = CustomerModel.getInstance();
+                        cusModel.setForename(forename);
+                        cusModel.setSurname(surname);
+                        cusModel.setContactNumber(contactNumber);
+                        cusModel.setEmail(email);
+                        
+                        cusModel.update();
+                        RequestDispatcher view = request.getRequestDispatcher("CustomerMenu.jsp");
+                        view.forward(request, response);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
