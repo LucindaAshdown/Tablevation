@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: helium
+Version: 1.9.6
+Summary: Simple web automation based on Selenium.
+Home-page: http://heliumhq.com
+Author: BugFree Software
+Author-email: contact@heliumhq.com
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: selenium web automation
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Operating System :: MacOS :: MacOS X
