@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.ReservationModel;
 import model.RestaurantModel;
+import utils.Validator;
 
 /**
  *
@@ -68,23 +70,19 @@ public class RestaurantController extends HttpServlet {
                     && postCode != null && contactNumber != null && foodType != null && stringTotalNumberOfSeats != null){
                 try{
                     int totalNumberOfSeats = Integer.parseInt(stringTotalNumberOfSeats);
-                    RestaurantModel resModel = RestaurantModel.getInstance();
-                    resModel.setEmail(email);
-                    resModel.setPassword(password);
-                    resModel.setName(restaurantName);
-                    resModel.setAddressLine1(addressLine1);
-                    resModel.setArea(area);
-                    resModel.setPostCode(postCode);
-                    resModel.setContactNumber(contactNumber);
-                    resModel.setFoodType(foodType);
-                    resModel.setTotalNumberOfSeats(totalNumberOfSeats);
-                    resModel.insert();
+                    boolean signupResult = this.signup(email, password, restaurantName, addressLine1, area,
+                                                      postCode, contactNumber, foodType, totalNumberOfSeats);
                     
-                    RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-                    view.forward(request, response);
+                    if(signupResult){
+                        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                        view.forward(request, response);
+                    }
+                    else{
+                        response.sendRedirect("errorPage.html");
+                    }
                 }
                 catch(Exception e){
-                    e.printStackTrace();
+                    response.sendRedirect("errorPage.html");
                 }
             }
         }
@@ -108,8 +106,6 @@ public class RestaurantController extends HttpServlet {
             HttpSession sess = request.getSession();
             String email = (String) sess.getAttribute("email");
             
-            DateFormat formatter = new SimpleDateFormat("HH:mm");
-            
             String contactNumber = request.getParameter("Contact_Number");
             String monToFryOt = request.getParameter("MondayToFriday_OT");
             String monToFryCt = request.getParameter("MondayToFriday_CT");
@@ -120,28 +116,16 @@ public class RestaurantController extends HttpServlet {
             int totalNumberOfSeats = Integer.parseInt(request.getParameter("Total_No_Seats"));
             if (email != null) {
                 try {
-                    Date MonToFryOpeningTime = formatter.parse(monToFryOt);
-                    Date MonToFryclosingTime = formatter.parse(monToFryCt);
-                    Date satOpeningTime = formatter.parse(satOt);
-                    Date satclosingTime = formatter.parse(satCt);
-                    Date sunOpeningTime = formatter.parse(sunOt);
-                    Date sunClosingTime = formatter.parse(sunCt);
-                    
-                    RestaurantModel resModel = RestaurantModel.getInstance();
-                    resModel.setMonFriOpTime(MonToFryOpeningTime);
-                    resModel.setMonFriClTime(MonToFryclosingTime);
-                    resModel.setSatOpTime(satOpeningTime);
-                    resModel.setSatClTime(satclosingTime);
-                    resModel.setSunOpTime(sunOpeningTime);
-                    resModel.setSunClTime(sunClosingTime);
-                    resModel.setTotalNumberOfSeats(totalNumberOfSeats);
-                    resModel.setContactNumber(contactNumber);
-                    resModel.setEmail(email);
-                    resModel.update();
-                    RequestDispatcher view = request.getRequestDispatcher("RestaurantMenu.html");
-                    view.forward(request, response);
+                    boolean result = this.update(monToFryOt,monToFryCt,satOt,satCt,sunOt,sunCt,totalNumberOfSeats,contactNumber,email);
+                    if(!result){
+                        response.sendRedirect("errorPage.html");
+                    }
+                    else{
+                        RequestDispatcher view = request.getRequestDispatcher("RestaurantMenu.html");
+                        view.forward(request, response);
+                    }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    response.sendRedirect("errorPage.html");
                 }
             }
         }
@@ -151,17 +135,80 @@ public class RestaurantController extends HttpServlet {
             int bookedSeats = Integer.parseInt(request.getParameter("Booked_seats"));
             if (email != null) {
                 try {
-                    RestaurantModel resModel = RestaurantModel.getInstance();
-                    resModel.setBookedSeats(bookedSeats);
-                    resModel.setEmail(email);
-                    resModel.updateNumberOfSeats();
-                    RequestDispatcher view = request.getRequestDispatcher("RestaurantMenu.html");
-                    view.forward(request, response);
+                    if(bookedSeats < 0){
+                        response.sendRedirect("errorPage.html");
+                    }
+                    else{
+                        RestaurantModel resModel = RestaurantModel.getInstance();
+                        resModel.setBookedSeats(bookedSeats);
+                        resModel.setEmail(email);
+                        resModel.updateNumberOfSeats();
+                        RequestDispatcher view = request.getRequestDispatcher("RestaurantMenu.html");
+                        view.forward(request, response);
+                    }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    response.sendRedirect("errorPage.html");
                 }
             }
         }
+    }
+    
+    public boolean update(String monToFryOt,String monToFryCt,String satOt,String satCt,String sunOt,String sunCt,
+                          int totalNumberOfSeats,String contactNumber,String email) throws ParseException, ClassNotFoundException, SQLException{
+        DateFormat formatter = new SimpleDateFormat("HH:mm");
+        Date MonToFryOpeningTime = formatter.parse(monToFryOt);
+        Date MonToFryclosingTime = formatter.parse(monToFryCt);
+        Date satOpeningTime = formatter.parse(satOt);
+        Date satclosingTime = formatter.parse(satCt);
+        Date sunOpeningTime = formatter.parse(sunOt);
+        Date sunClosingTime = formatter.parse(sunCt);
+        
+        RestaurantModel resModel = RestaurantModel.getInstance();
+        
+        if(MonToFryOpeningTime.after(MonToFryclosingTime) || satOpeningTime.after(satclosingTime) 
+                || sunOpeningTime.after(sunClosingTime)){
+           
+            return false;
+            
+        }
+        resModel.setMonFriOpTime(MonToFryOpeningTime);
+        resModel.setMonFriClTime(MonToFryclosingTime);
+        resModel.setSatOpTime(satOpeningTime);
+        resModel.setSatClTime(satclosingTime);
+        resModel.setSunOpTime(sunOpeningTime);
+        resModel.setSunClTime(sunClosingTime);
+        
+        if(totalNumberOfSeats <= 0){
+           return false;
+        }
+        
+        resModel.setTotalNumberOfSeats(totalNumberOfSeats);
+        resModel.setContactNumber(contactNumber);
+        resModel.setEmail(email);
+        resModel.update();
+        return true;
+    }
+    
+    public boolean signup(String email,String password,String restaurantName,String addressLine1,
+            String area,String postCode,String contactNumber,String foodType,int totalNumberOfSeats)
+            throws ClassNotFoundException, SQLException{
+        if(!Validator.validateEmail(email)) return false;
+        RestaurantModel resModel = RestaurantModel.getInstance();
+        resModel.setEmail(email);
+        resModel.setPassword(password);
+        resModel.setName(restaurantName);
+        resModel.setAddressLine1(addressLine1);
+        resModel.setArea(area);
+        resModel.setPostCode(postCode);
+        resModel.setContactNumber(contactNumber);
+        resModel.setFoodType(foodType);
+        
+        if(totalNumberOfSeats <= 0){
+            return false;
+        }
+        resModel.setTotalNumberOfSeats(totalNumberOfSeats);
+        resModel.insert();
+        return true;
     }
     
     public boolean login(String password,String email) throws ClassNotFoundException, SQLException{

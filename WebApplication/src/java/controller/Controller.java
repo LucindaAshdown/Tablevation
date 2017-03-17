@@ -73,9 +73,13 @@ public class Controller extends HttpServlet {
                        response.sendRedirect("RestaurantMenu.html");   
                    }
                }
+               else{
+                   response.sendRedirect("errorPage.html");
+               }
            }
            catch(Exception e){
                e.printStackTrace();
+               response.sendRedirect("errorPage.html");
            }
         }
         else if("logout".equals(action)){
@@ -86,5 +90,4 @@ public class Controller extends HttpServlet {
             view.forward(request, response);
         }
     }
-
 }

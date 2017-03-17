@@ -46,24 +46,19 @@ public class ReservationModel implements Model{
     // METHODS INTERFACING WITH THE DATABASE //
     
     @Override
-    public void insert() {
+    public void insert() throws SQLException{
         String query = "INSERT INTO Reservation (Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Date,No_Guests,Details)"
                 + " VALUES (?,?,?,?,?,?)";
-        try{
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, this.restaurantName);
-            ps.setString(2, this.restaurantEmail);
-            ps.setString(3, this.customerEmail);
-            Timestamp bookedDate = new Timestamp(this.bookedDate.getTime());
-            ps.setTimestamp(4, bookedDate);
-            ps.setInt(5, this.numberOfGuests);
-            ps.setString(6, this.details);
-            
-            ps.executeUpdate();
-        }
-        catch(Exception e){
-            
-        }
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, this.restaurantName);
+        ps.setString(2, this.restaurantEmail);
+        ps.setString(3, this.customerEmail);
+        Timestamp bookedDateTimestamp = new Timestamp(this.bookedDate.getTime());
+        ps.setTimestamp(4, bookedDateTimestamp);
+        ps.setInt(5, this.numberOfGuests);
+        ps.setString(6, this.details);
+        
+        ps.executeUpdate();
     }
 
     @Override
@@ -116,6 +111,19 @@ public class ReservationModel implements Model{
            reservationModelList.add(reservation);
         }
         return reservationModelList;
+    }
+    
+    public boolean alreadyBooked(Date bookingDate,String restaurantEmail) throws SQLException{
+        String query = "SELECT * FROM Reservation "
+                + "WHERE Booked_Date =? AND Restaurant_Email=?";
+        
+        PreparedStatement ps = conn.prepareStatement(query);
+        Timestamp bookedDateTimestamp = new Timestamp(bookingDate.getTime());
+        
+        ps.setTimestamp(1, bookedDateTimestamp);
+        ps.setString(2, restaurantEmail);
+        ResultSet rs = ps.executeQuery();
+        return rs.next();
     }
     
     // GETTERS AND SETTERS //
@@ -217,6 +225,4 @@ public class ReservationModel implements Model{
     public void setDetails(String details) {
         this.details = details;
     }
-    
-    
 }

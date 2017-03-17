@@ -59,37 +59,31 @@ public class RestaurantModel implements Model{
     // METHODS INTERFACING WITH THE DATABASE //
     
     @Override
-    public void insert() {
+    public void insert() throws SQLException{
         String query = "INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try {
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, this.email);
-            ps.setString(2, this.password);
-            ps.setString(3, this.name); /*name */
-            ps.setString(4, this.addressLine1); /*Address line 1 */
-            ps.setString(5, this.area); /*Area */
-            ps.setString(6, "Portsmouth"); /*City */
-            ps.setString(7, "Hampshire"); /*County */
-            ps.setString(8, this.postCode); /*PostCode */
-            ps.setInt(9, -1); /*Rating */
-            ps.setInt(10, 0);
-            ps.setString(11, this.contactNumber); /*Contact Number */
-            Date currentDate = new Date();
-            Time currentTime = new Time(currentDate.getTime());
-            ps.setTime(12, currentTime); /* Monday to Friday Opening */
-            ps.setTime(13, currentTime); /* Monday to Friday Closing */
-            ps.setTime(14, currentTime); /* Saturday Opening Time */
-            ps.setTime(15, currentTime); /* Saturday Closing Time */
-            ps.setTime(16, currentTime); /* Sunday Opening Time */
-            ps.setTime(17, currentTime); /* Sunday Closing Time */
-            ps.setString(18, this.foodType);
-            ps.setInt(19,this.totalNumberOfSeats);
-            ps.executeUpdate();
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, this.email);
+        ps.setString(2, this.password);
+        ps.setString(3, this.name); /*name */
+        ps.setString(4, this.addressLine1); /*Address line 1 */
+        ps.setString(5, this.area); /*Area */
+        ps.setString(6, "Portsmouth"); /*City */
+        ps.setString(7, "Hampshire"); /*County */
+        ps.setString(8, this.postCode); /*PostCode */
+        ps.setInt(9, -1); /*Rating */
+        ps.setInt(10, 0);
+        ps.setString(11, this.contactNumber); /*Contact Number */
+        Date currentDate = new Date();
+        Time currentTime = new Time(currentDate.getTime());
+        ps.setTime(12, currentTime); /* Monday to Friday Opening */
+        ps.setTime(13, currentTime); /* Monday to Friday Closing */
+        ps.setTime(14, currentTime); /* Saturday Opening Time */
+        ps.setTime(15, currentTime); /* Saturday Closing Time */
+        ps.setTime(16, currentTime); /* Sunday Opening Time */
+        ps.setTime(17, currentTime); /* Sunday Closing Time */
+        ps.setString(18, this.foodType);
+        ps.setInt(19,this.totalNumberOfSeats);
+        ps.executeUpdate();
     }
 
     @Override
@@ -438,7 +432,4 @@ public class RestaurantModel implements Model{
     public void setMonFriClTime(Date monFriClTime) {
         this.monFriClTime = monFriClTime;
     }
-    
-
-
 }

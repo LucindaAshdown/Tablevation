@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import model.CustomerModel;
 import model.ReservationModel;
 import model.RestaurantModel;
+import utils.Validator;
 
 /**
  *
@@ -64,18 +65,17 @@ public class CustomerController extends HttpServlet {
             
             if (email != null && password != null && surname != null && forename != null && contactNumber != null) {
                 try {
-                    CustomerModel cusModel = CustomerModel.getInstance();
-                    cusModel.setEmail(email);
-                    cusModel.setPassword(password);
-                    cusModel.setForename(forename);
-                    cusModel.setSurname(surname);
-                    cusModel.setContactNumber(contactNumber);
-                    
-                    cusModel.insert();
-                    RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-                    view.forward(request, response);
+                    boolean signupResult = this.signup(email,password,forename,surname,contactNumber);
+                    if(!signupResult){
+                        response.sendRedirect("errorPage.html");
+                    }
+                    else{
+                        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                        view.forward(request, response);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    response.sendRedirect("errorPage.html");
                 }
             }
         }
@@ -92,7 +92,7 @@ public class CustomerController extends HttpServlet {
                     RequestDispatcher view = request.getRequestDispatcher("CustomerSearchRestaurants.jsp");
                     view.forward(request, response);
                 } catch (Exception e) {
-                    
+                    response.sendRedirect("errorPage.html");
                 }
             }
         }
@@ -109,6 +109,7 @@ public class CustomerController extends HttpServlet {
                     view.forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
+                    response.sendRedirect("errorPage.html");
                 }
             }
         }
@@ -132,23 +133,25 @@ public class CustomerController extends HttpServlet {
                 String restaurantEmail = request.getParameter("Restaurant_Email");
                 String name = request.getParameter("Restaurant_Name");
                 String details = request.getParameter("Details");
-                
-                DateFormat formatter = new SimpleDateFormat("MM/dd/yy HH:mm");
                 try {
+                    DateFormat formatter = new SimpleDateFormat("MM/dd/yy HH:mm");
                     Date date = formatter.parse(bookedDate + " " + bookedTime);
                     ReservationModel reservationModel = ReservationModel.getInstance();
-                    reservationModel.setNumberOfGuests(numberOfGuests);
-                    reservationModel.setRestaurantEmail(restaurantEmail);
-                    reservationModel.setCustomerEmail(email);
-                    reservationModel.setBookedDate(date);
-                    reservationModel.setRestaurantName(name);
-                    reservationModel.setDetails(details);
                     
-                    reservationModel.insert();
-                    RequestDispatcher view = request.getRequestDispatcher("CustomerMenu.jsp");
-                    view.forward(request, response);
+                    if(!reservationModel.alreadyBooked(date,restaurantEmail)){
+                        if(!this.makeReservation(reservationModel,numberOfGuests,restaurantEmail,email,date,name,details)){
+                            response.sendRedirect("errorPage.html");
+                        }
+                        else{
+                            RequestDispatcher view = request.getRequestDispatcher("CustomerMenu.jsp");
+                            view.forward(request, response);
+                        }
+                    }
+                    else{
+                       response.sendRedirect("alreadyBooked.html");
+                    }
                 } catch (Exception ex) {
-                    ex.printStackTrace();
+                    response.sendRedirect("errorPage.html");
                 }
             }
         }
@@ -173,6 +176,7 @@ public class CustomerController extends HttpServlet {
                         view.forward(request, response);
                     } catch (Exception e) {
                         e.printStackTrace();
+                        response.sendRedirect("errorPage.html");
                     }
                 }
             }
@@ -183,5 +187,41 @@ public class CustomerController extends HttpServlet {
     public boolean login(String password, String email) throws ClassNotFoundException, SQLException {
         CustomerModel cusModel = CustomerModel.getInstance();
         return cusModel.isPresentAccountIntoDb(email, password);
+    }
+    
+    public boolean signup(String email,String password,String forename,String surname,String contactNumber) 
+            throws ClassNotFoundException, SQLException{
+        CustomerModel cusModel = CustomerModel.getInstance();
+        if(!Validator.validateEmail(email)) return false;
+        cusModel.setEmail(email);
+        cusModel.setPassword(password);
+        cusModel.setForename(forename);
+        cusModel.setSurname(surname);
+        cusModel.setContactNumber(contactNumber);
+        
+        cusModel.insert();
+        return true;
+    }
+   
+    public boolean makeReservation(ReservationModel reservationModel,int numberOfGuests,String restaurantEmail,
+                                   String email,Date date,String name,String details) throws SQLException{
+        
+        if(date.after(new Date())){
+            return false;
+        }
+        if(numberOfGuests <= 0){
+            return false;
+        }
+        else{
+            reservationModel.setNumberOfGuests(numberOfGuests);
+            reservationModel.setRestaurantEmail(restaurantEmail);
+            reservationModel.setCustomerEmail(email);
+            reservationModel.setBookedDate(date);
+            reservationModel.setRestaurantName(name);
+            reservationModel.setDetails(details);
+            
+            reservationModel.insert();
+            return true;
+        }
     }
 }
