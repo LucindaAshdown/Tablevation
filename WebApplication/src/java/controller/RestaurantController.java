@@ -135,14 +135,10 @@ public class RestaurantController extends HttpServlet {
             int bookedSeats = Integer.parseInt(request.getParameter("Booked_seats"));
             if (email != null) {
                 try {
-                    if(bookedSeats < 0){
+                    if(!this.updateNumberOfSeats(bookedSeats,email)){
                         response.sendRedirect("errorPage.html");
                     }
                     else{
-                        RestaurantModel resModel = RestaurantModel.getInstance();
-                        resModel.setBookedSeats(bookedSeats);
-                        resModel.setEmail(email);
-                        resModel.updateNumberOfSeats();
                         RequestDispatcher view = request.getRequestDispatcher("RestaurantMenu.html");
                         view.forward(request, response);
                     }
@@ -214,6 +210,19 @@ public class RestaurantController extends HttpServlet {
     public boolean login(String password,String email) throws ClassNotFoundException, SQLException{
         RestaurantModel resModel = RestaurantModel.getInstance();
         return resModel.isPresentAccountIntoDb(email,password);
+    }
+    
+    public boolean updateNumberOfSeats(int bookedSeats,String email) throws ClassNotFoundException, SQLException{
+        if(bookedSeats <= 0){
+            return false;
+        }
+        else{
+            RestaurantModel resModel = RestaurantModel.getInstance();
+            resModel.setBookedSeats(bookedSeats);
+            resModel.setEmail(email);
+            resModel.updateNumberOfSeats();
+            return true;
+        }
     }
 
 }

@@ -206,7 +206,8 @@ public class CustomerController extends HttpServlet {
     public boolean makeReservation(ReservationModel reservationModel,int numberOfGuests,String restaurantEmail,
                                    String email,Date date,String name,String details) throws SQLException{
         
-        if(date.after(new Date())){
+        Date currentDate = new Date();
+        if(!date.after(currentDate)){
             return false;
         }
         if(numberOfGuests <= 0){

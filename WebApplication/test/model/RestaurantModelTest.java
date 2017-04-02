@@ -53,7 +53,7 @@ public class RestaurantModelTest {
             rest.setArea("southsea");
             rest.setCity("Portsmouth");
             rest.setCounty("Hampshire");
-            rest.setPostCode("");
+            rest.setPostCode("PO1 2DJ");
             rest.setRating(-1);
             rest.setBookedSeats(0);
             rest.setContactNumber("0986545678");
@@ -129,7 +129,7 @@ public class RestaurantModelTest {
         RestaurantModel rest = RestaurantModel.getInstance();
         boolean result = rest.isPresentAccountIntoDb("luc@luc.com", "Lucinda1");
         assertEquals(true,result);
-        assertEquals(false,rest.isPresentAccountIntoDb("kacj@kaf.com", "vrbsh"));
+        assertEquals(false,rest.isPresentAccountIntoDb("kac@kaf.com", "verb124"));
     }
 
     /**

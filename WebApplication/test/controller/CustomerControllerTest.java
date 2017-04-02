@@ -47,10 +47,11 @@ public class CustomerControllerTest {
         assertEquals(expResult, result);  
     }
     
+    @Test
     public void testSignup() throws ClassNotFoundException, SQLException{
         String password = "osuhr";
         String forename = "Julia";
-        String surname = "sugar";
+        String surname = "sug";
         String contactNumber = "0934567890";
         
         assertTrue(cs.signup(this.email, password, forename, surname, contactNumber));
@@ -59,21 +60,24 @@ public class CustomerControllerTest {
         assertEquals(false,cs.signup(notValidEmail, password, forename, surname, contactNumber));
     }
     
+    @Test
     public void testMakeReservation() throws ClassNotFoundException, SQLException{
         int numberOfGuests = 4;
         String restaurantEmail = "luc@luc.com";
         String email = "nota@nota.com";
         Date currentDate = new Date();
         Date testDate = new Date(currentDate.getTime() + 60000000);
-        String name = "isrgsgr";
-        String details = "datails";
+        String name = "Mark";
+        String details = "details example string";
         ReservationModel rs = ReservationModel.getInstance();
         assertEquals(true,cs.makeReservation(rs, numberOfGuests, restaurantEmail, email, testDate, name, details));
         
         numberOfGuests = 0;
         assertEquals(false,cs.makeReservation(rs, numberOfGuests, restaurantEmail, email, testDate, name, details));
-        numberOfGuests = 5;
+        numberOfGuests = -5;
+        assertEquals(false,cs.makeReservation(rs, numberOfGuests, restaurantEmail, email, testDate, name, details));
         
+        numberOfGuests = 5;
         testDate = new Date(currentDate.getTime() - 60000000);
         assertEquals(false,cs.makeReservation(rs, numberOfGuests, restaurantEmail, email, testDate, name, details));
     }

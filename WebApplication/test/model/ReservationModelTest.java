@@ -65,7 +65,7 @@ public class ReservationModelTest {
        assertEquals(false,reservation.alreadyBooked(date, "l@c.com"));
        
        Date d1 = new Date(date.getTime() + 60000000);
-       assertEquals(false,reservation.alreadyBooked(date, "l@c.com"));
+       assertEquals(false,reservation.alreadyBooked(d1, "luc@luc.com"));
     }
     
     /**

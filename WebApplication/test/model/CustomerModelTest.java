@@ -49,8 +49,8 @@ public class CustomerModelTest {
             CustomerModel cs = CustomerModel.getInstance();
             cs.setEmail(this.email);
             cs.setPassword(this.password);
-            cs.setForename("Francesco David");
-            cs.setSurname("Nota");
+            cs.setForename("Mirko");
+            cs.setSurname("Vucinic");
             cs.setContactNumber("081924535");
             
             cs.insert();
@@ -68,7 +68,7 @@ public class CustomerModelTest {
             CustomerModel cs = CustomerModel.getInstance();
             
             cs.setForename("Lucinda");
-            cs.setSurname("Ash");
+            cs.setSurname("Benny");
             cs.setContactNumber("089999999");
             cs.setEmail("nota@nota.com");
             
@@ -85,6 +85,7 @@ public class CustomerModelTest {
     public void testIsPresentAccountIntoDb() throws Exception {
         CustomerModel cs = CustomerModel.getInstance();
         assertTrue(cs.isPresentAccountIntoDb("nota@nota.com", "Francesco1"));
+        assertEquals(false,cs.isPresentAccountIntoDb("luc@mail.com", "luc"));
     }
 
     /**

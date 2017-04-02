@@ -19,7 +19,6 @@ public class RestaurantControllerTest {
     private RestaurantController rs;
     private String email;
             
-    
     public RestaurantControllerTest(){
         rs = new RestaurantController();
         Random rn = new Random();
@@ -49,15 +48,16 @@ public class RestaurantControllerTest {
     public void testSignup() throws ClassNotFoundException, SQLException{
         String password = "Francesco3553";
         String restaurantName = "Jamie Rest";
-        String addressLine1 = "address example";
-        String area = "portsmouth";
+        String addressLine1 = "example street";
+        String area = "southsea";
         String postCode = "COD DFFD";
         String contactNumber = "04444028592";
-        String foodType = "italian";
+        String foodType = "indian";
         int numberOfSeats = 20;
         assertTrue(rs.signup(this.email, password, restaurantName, addressLine1, area, postCode, contactNumber, foodType, numberOfSeats));
         
         assertEquals(false,rs.signup(this.email, password, restaurantName, addressLine1, area, postCode, contactNumber, foodType, 0));
+        assertEquals(false,rs.signup(this.email, password, restaurantName, addressLine1, area, postCode, contactNumber, foodType, -5));
         
         email = "aoeugn";
         assertEquals(false,rs.signup(email, password, restaurantName, addressLine1, area, postCode, contactNumber, foodType, numberOfSeats));
@@ -73,7 +73,7 @@ public class RestaurantControllerTest {
         String sunCt = "15:20";
         int totalNumberOfSeats = 2;
         String contactNumber = "2535902503";
-        String email = "nota@nota.com";
+        String email = "na@na.com";
         
         assertTrue(rs.update(monToFryOt, monToFryCt, satOt, satCt, sunOt, sunCt, totalNumberOfSeats, contactNumber, email));
         
@@ -91,5 +91,18 @@ public class RestaurantControllerTest {
         
         totalNumberOfSeats = 0;
         assertEquals(false,rs.update(monToFryOt, monToFryCt, satOt, satCt, sunOt, sunCt, totalNumberOfSeats, contactNumber, email));
+    
+        totalNumberOfSeats = -5;
+        assertEquals(false,rs.update(monToFryOt, monToFryCt, satOt, satCt, sunOt, sunCt, totalNumberOfSeats, contactNumber, email));
+    }
+    
+    @Test
+    public void testUpdateNumberOfBookedSeats() throws ClassNotFoundException, SQLException{
+        String email = "luc@luc.com";
+        int bookedSeats = 20;
+        
+        assertTrue(rs.updateNumberOfSeats(bookedSeats, email));
+        assertEquals(false,rs.updateNumberOfSeats(0, email));
+        assertEquals(false,rs.updateNumberOfSeats(-15, email));
     }
 }
