@@ -34,12 +34,21 @@ public class CustomerModel implements Model{
        conn = Database.getConnection();
     }
     
+    /**
+     * gets an instance of the customer model
+     * @return an instance of the customer model
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static CustomerModel getInstance() throws ClassNotFoundException, SQLException{
          if(getCustomerModel() == null)
              setCustomerModel(new CustomerModel());
          return getCustomerModel();
     }
     
+    /**
+     * inserts a customer into the database
+     */
     @Override
     public void insert() {
         String query = "INSERT INTO Customer VALUES (?,?,?,?,?)";
@@ -57,6 +66,9 @@ public class CustomerModel implements Model{
         }
     }
 
+    /**
+     * update customer data into the database
+     */
     @Override
     public void update() {
         String query = "UPDATE Customer SET Forename=?,Surname=?,Contact_Number=? WHERE Customer_Email = ?";
@@ -74,6 +86,13 @@ public class CustomerModel implements Model{
         }
     }
     
+    /**
+     * checks wheter a customer account is into the database or not
+     * @param email the email of the customer
+     * @param password the password of the customer
+     * @return true if the account is into the db
+     * @throws SQLException 
+     */
     public boolean isPresentAccountIntoDb(String email,String password) throws SQLException{
            String query = "SELECT Customer_email,Customer_password FROM Customer WHERE Customer_email=? AND Customer_password=?";
            PreparedStatement ps = getConn().prepareStatement(query);
@@ -85,7 +104,7 @@ public class CustomerModel implements Model{
     }
     
     /**
-     * @return the conn
+     * @return the connection to the database
      */
     public Connection getConn() {
         return conn;

@@ -16,6 +16,11 @@ public class Validator {
     public Validator(){
     }
     
+    /**
+     * validates an email
+     * @param email the email to be validated
+     * @return true if the email has a correct structure
+     */
     public static boolean validateEmail(String email){
        if (email == null || "".equals(email))
 		return false;

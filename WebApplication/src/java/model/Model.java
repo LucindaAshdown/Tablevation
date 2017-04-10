@@ -6,7 +6,6 @@
 package model;
 
 import java.sql.SQLException;
-import java.util.LinkedList;
 
 /**
  * An interface representing a generic model
@@ -14,14 +13,13 @@ import java.util.LinkedList;
  */
 public interface Model {
     /**
-     * @param model the object instance to be inserted in the database of the class that 
-     * implements the model interface 
+     * creates the instance of the class implementing the interface
+     * @throws java.sql.SQLException
      */
     public void insert() throws SQLException;
     
     /**
-     * @param model the object instance to be updated in the database of the class that 
-     * implements the model interface 
+     * updates the instance of the class implementing the interface
      */
     public void update();
 }

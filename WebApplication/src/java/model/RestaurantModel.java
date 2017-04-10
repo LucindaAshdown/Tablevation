@@ -51,6 +51,12 @@ public class RestaurantModel implements Model{
        conn = Database.getConnection();
     }
     
+    /**
+     * gets an instance of the restaurant model
+     * @return the instance of the restaurant model
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public static RestaurantModel getInstance() throws ClassNotFoundException, SQLException{
          if(restaurantModel == null)
              restaurantModel = new RestaurantModel();
@@ -58,6 +64,10 @@ public class RestaurantModel implements Model{
     }
     // METHODS INTERFACING WITH THE DATABASE //
     
+    /**
+     * inserts a restaurant into the database
+     * @throws SQLException 
+     */
     @Override
     public void insert() throws SQLException{
         String query = "INSERT INTO Restaurant VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -86,6 +96,9 @@ public class RestaurantModel implements Model{
         ps.executeUpdate();
     }
 
+    /**
+     * updates restaurant data into the database
+     */
     @Override
     public void update() {
         String query = "UPDATE Restaurant SET "
@@ -118,6 +131,9 @@ public class RestaurantModel implements Model{
         
     }
     
+    /**
+     * updates the number of seats of a restaurant
+     */
     public void updateNumberOfSeats(){
         String query = "UPDATE Restaurant SET Booked_Seats = ? WHERE Restaurant_Email = ?";
             try {
@@ -132,6 +148,13 @@ public class RestaurantModel implements Model{
         }
     }
     
+    /**
+     * checks if a restaurant is into the database
+     * @param email the email of the restaurant
+     * @param password the password of the restaurant
+     * @return true if the account is into the database
+     * @throws SQLException 
+     */
     public boolean isPresentAccountIntoDb(String email,String password) throws SQLException{
            String query = "SELECT Restaurant_email,Restaurant_password FROM Restaurant WHERE Restaurant_email=? AND Restaurant_password=?";
            PreparedStatement ps = conn.prepareStatement(query);
@@ -143,8 +166,11 @@ public class RestaurantModel implements Model{
     }
     
     /**
-     * @param area parameter used to find restaurants having has attribute the area
+     * selects a restaurant by area
+     * @param area the parameter used to find restaurants having as attribute the area
      * @return the list of restaurants belonging to the selected area
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */    
     public LinkedList<RestaurantModel> selectByArea(String area) throws SQLException, ClassNotFoundException{
         String query = "SELECT Restaurant_Email,Name,Address_Line1,PostCode,Contact_Number,Food_Type FROM restaurant WHERE Area = ?";

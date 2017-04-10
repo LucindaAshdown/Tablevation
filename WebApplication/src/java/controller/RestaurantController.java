@@ -149,6 +149,22 @@ public class RestaurantController extends HttpServlet {
         }
     }
     
+    /**
+     * updates restaurant data
+     * @param monToFryOt the opening time that goes from monday to friday
+     * @param monToFryCt the closing time that goes from monday to friday
+     * @param satOt saturday opening time
+     * @param satCt saturday closing time
+     * @param sunOt sunday opening time
+     * @param sunCt sunday closing time
+     * @param totalNumberOfSeats the number of seats of the restaurant
+     * @param contactNumber the contact number of the restaurant
+     * @param email the email of the restaurant
+     * @return true if update operation is completed
+     * @throws ParseException
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean update(String monToFryOt,String monToFryCt,String satOt,String satCt,String sunOt,String sunCt,
                           int totalNumberOfSeats,String contactNumber,String email) throws ParseException, ClassNotFoundException, SQLException{
         DateFormat formatter = new SimpleDateFormat("HH:mm");
@@ -185,6 +201,21 @@ public class RestaurantController extends HttpServlet {
         return true;
     }
     
+    /**
+     * creates a restaurant account into the db
+     * @param email the email of the restaurant
+     * @param password the password of the restaurant
+     * @param restaurantName the restaurant name
+     * @param addressLine1 the address of the restaurant
+     * @param area the area where the restaurant is situated
+     * @param postCode the post code of the restaurant
+     * @param contactNumber the contact number of the restaurant 
+     * @param foodType the food type the restaurant sells
+     * @param totalNumberOfSeats the total number of seats of the restaurant
+     * @return true if the data is correct
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean signup(String email,String password,String restaurantName,String addressLine1,
             String area,String postCode,String contactNumber,String foodType,int totalNumberOfSeats)
             throws ClassNotFoundException, SQLException{
@@ -207,11 +238,27 @@ public class RestaurantController extends HttpServlet {
         return true;
     }
     
+    /**
+     * permit a restaurant to login
+     * @param password the password inserted by the restaurant user
+     * @param email the email inserted by the restaurant user
+     * @return true if the operations is concluded without errors
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean login(String password,String email) throws ClassNotFoundException, SQLException{
         RestaurantModel resModel = RestaurantModel.getInstance();
         return resModel.isPresentAccountIntoDb(email,password);
     }
     
+    /**
+     * 
+     * @param bookedSeats the booked seats field to be updated
+     * @param email the email of the restaurant 
+     * @return true if the operations is concluded without errors
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean updateNumberOfSeats(int bookedSeats,String email) throws ClassNotFoundException, SQLException{
         if(bookedSeats <= 0){
             return false;

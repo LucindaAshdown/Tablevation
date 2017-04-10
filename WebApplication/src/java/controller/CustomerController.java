@@ -183,12 +183,30 @@ public class CustomerController extends HttpServlet {
         }
     }
     
-    
+    /**
+     * A method used to login into the website
+     * @param password the password inserted by the user
+     * @param email the email inserted by the user
+     * @return true if the login is permitted
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean login(String password, String email) throws ClassNotFoundException, SQLException {
         CustomerModel cusModel = CustomerModel.getInstance();
         return cusModel.isPresentAccountIntoDb(email, password);
     }
     
+    /**
+     * signup is used to create a new account
+     * @param email the email inserted by the user
+     * @param password the password inserted by the user
+     * @param forename the forename of the user
+     * @param surname the surname of the user
+     * @param contactNumber the contact number of the user
+     * @return true if the operation completes without errors
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public boolean signup(String email,String password,String forename,String surname,String contactNumber) 
             throws ClassNotFoundException, SQLException{
         CustomerModel cusModel = CustomerModel.getInstance();
@@ -202,7 +220,18 @@ public class CustomerController extends HttpServlet {
         cusModel.insert();
         return true;
     }
-   
+    /**
+     * makeReservation permit to create a reservation in a restaurant
+     * @param reservationModel the model used to store data into the database
+     * @param numberOfGuests the number of guests of the reservation
+     * @param restaurantEmail the restaurant email of the restaurant where to make the reservation
+     * @param email the email of the user who is making the reservation
+     * @param date the date of the reservation
+     * @param name the name of the restaurant where to make the reservation
+     * @param details the details inserted by the user 
+     * @return true if all the data inserted is correct
+     * @throws SQLException 
+     */
     public boolean makeReservation(ReservationModel reservationModel,int numberOfGuests,String restaurantEmail,
                                    String email,Date date,String name,String details) throws SQLException{
         

@@ -45,6 +45,10 @@ public class ReservationModel implements Model{
     
     // METHODS INTERFACING WITH THE DATABASE //
     
+    /**
+     * inserts a reservation into the database
+     * @throws SQLException 
+     */
     @Override
     public void insert() throws SQLException{
         String query = "INSERT INTO Reservation (Restaurant_Name,Restaurant_Email,Customer_Email,Booked_Date,No_Guests,Details)"
@@ -61,13 +65,12 @@ public class ReservationModel implements Model{
         ps.executeUpdate();
     }
 
+    
     @Override
-    public void update() {
-        PreparedStatement ps;
-        String query = "UPDATE Reservation SET (?,?,?,?)";
-    }
+    public void update() {}
     
     /**
+     * selects all the reservations of a customer user
      * @param email the unique email of the customer who wants to see the
      * reservations he made
      * @return the list of reservations made by the customer
@@ -80,6 +83,7 @@ public class ReservationModel implements Model{
     }
     
     /**
+     * selects all the reservations of a restaurant user
      * @param email the unique email of the restaurant who wants to see the
      * reservations made by customers
      * @return the list of reservations received by a restaurant
@@ -113,6 +117,13 @@ public class ReservationModel implements Model{
         return reservationModelList;
     }
     
+    /**
+     * checks if a reservation at a specified time has already been booked
+     * @param bookingDate the booking date
+     * @param restaurantEmail the email of the restaurant to be checked for booking a reservation
+     * @return true if there is no possibility to book a table
+     * @throws SQLException 
+     */
     public boolean alreadyBooked(Date bookingDate,String restaurantEmail) throws SQLException{
         String query = "SELECT * FROM Reservation "
                 + "WHERE Booked_Date =? AND Restaurant_Email=?";
